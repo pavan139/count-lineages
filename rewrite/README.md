@@ -49,8 +49,9 @@ the archive figures in the paper. It has not been published anywhere.
 
 ## Review history
 
-On 15 November 2026 five independent reviewers (mathematics, archive numbers and code, newer
-panel and DIF, citations, adversarial referee) checked the paper. Their confirmed findings were
+On 15 November 2026 the paper went through five AI-assisted review passes (mathematics, archive
+numbers and code, newer panel and DIF, citations, adversarial referee). No independent human
+reviewer has checked it yet. Confirmed findings from those passes were
 applied: corrected family labels (6 models), a model-level bootstrap baseline for screening, a
 fixed-ability-scale simulation, equal family weighting, a power-matched null for DIF replication,
 a stricter name match and placebo pool on the newer leaderboard, restated propositions, a new
