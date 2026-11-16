@@ -40,11 +40,6 @@ are not stored here:
 Run the scripts from inside `pilot_neff/`. Several of them are plain scripts that execute on
 import, so run them, do not import them.
 
-## Status
-
-`rewrite/main_status.pdf` carries an evidence-status appendix listing what has and has not
-been checked. The work was produced with extensive AI assistance and has not yet had an
-independent human review.
 
 ## Licence
 
