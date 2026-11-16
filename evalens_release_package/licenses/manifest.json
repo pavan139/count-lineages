@@ -1,0 +1,69 @@
+{
+  "scope": "Exact source notices fetched for this distribution; dates are notice-verification dates, not original evaluation dates. These notices do not relicense third-party material.",
+  "files": [
+    {
+      "path": "licenses/hellaswag-MIT.txt",
+      "source_url": "https://raw.githubusercontent.com/rowanz/hellaswag/master/LICENSE",
+      "sha256": "7fa4c79209aed73ac82176cae51eb565ae0f33cf4108b380121c7731953f415f",
+      "bytes": 1070,
+      "retrieved_on": "2026-09-05",
+      "modifications": "none"
+    },
+    {
+      "path": "licenses/gsm8k-MIT.txt",
+      "source_url": "https://raw.githubusercontent.com/openai/grade-school-math/master/LICENSE",
+      "sha256": "86bbb73e855821d7c401912fd4bf82e34313e6e3b6fd6f909f2b6cc9e209a53b",
+      "bytes": 1062,
+      "retrieved_on": "2026-09-05",
+      "modifications": "none"
+    },
+    {
+      "path": "licenses/truthfulqa-Apache-2.0.txt",
+      "source_url": "https://raw.githubusercontent.com/sylinrl/TruthfulQA/main/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357,
+      "retrieved_on": "2026-09-05",
+      "modifications": "none"
+    },
+    {
+      "path": "licenses/CC-BY-4.0.txt",
+      "source_url": "https://creativecommons.org/licenses/by/4.0/legalcode.txt",
+      "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "bytes": 18657,
+      "retrieved_on": "2026-09-05",
+      "modifications": "none"
+    },
+    {
+      "path": "licenses/CC-BY-SA-4.0.txt",
+      "source_url": "https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt",
+      "sha256": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+      "bytes": 20138,
+      "retrieved_on": "2026-09-05",
+      "modifications": "none"
+    },
+    {
+      "path": "licenses/arc-data-card.md",
+      "source_url": "https://huggingface.co/datasets/allenai/ai2_arc/raw/main/README.md",
+      "sha256": "4a293e352253d771604725c978adcea71ee6504e89ed40e1cb0024ecafa9b37e",
+      "bytes": 9001,
+      "retrieved_on": "2026-09-05",
+      "modifications": "none"
+    },
+    {
+      "path": "licenses/benchmirt-data-card.md",
+      "source_url": "https://huggingface.co/datasets/allenai/BenchMIRT-eval-data/raw/67edc41cba6795b596959ffb81f631f6bc285e3b/README.md",
+      "sha256": "fd059624aeb39006cc7681e9e2fbf84af9a12c74ec2541b07b01cc243233b636",
+      "bytes": 324,
+      "retrieved_on": "2026-09-05",
+      "modifications": "none"
+    },
+    {
+      "path": "licenses/winogrande-readme.md",
+      "source_url": "https://raw.githubusercontent.com/allenai/winogrande/master/README.md",
+      "sha256": "6dc5ec952a9e5d6e553e2800c24b43b1fa8add70d998e60b76262e2195413efe",
+      "bytes": 4563,
+      "retrieved_on": "2026-09-05",
+      "modifications": "none"
+    }
+  ]
+}

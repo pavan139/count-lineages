@@ -1,0 +1,814 @@
+\documentclass[10pt]{article}
+\usepackage{tmlr}
+\usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,microtype}
+\usepackage{caption,url,xurl,xcolor}
+\usepackage[section]{placeins}
+\usepackage[colorlinks=true,allcolors=blue!55!black]{hyperref}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\emergencystretch}{2em}
+
+% Every number below comes from numbers.tex and tab_*.tex, which are written by
+% pilot_neff/make_tables.py from result files. Do not type numbers by hand.
+% main.tex compiles the clean paper; main_status.tex adds the working notes.
+\input{numbers}
+\newif\ifdraft
+\ifdefined\showstatus \drafttrue \else \draftfalse \fi
+\newcommand{\todo}[1]{\ifdraft\textcolor{blue!70!black}{[TODO: #1]}\fi}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}\newtheorem{remark}{Remark}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\deff}{\mathrm{deff}}
+
+\title{Count Lineages, Not Checkpoints:\\LLMs Are Not Independent Test-Takers}
+\author{Anonymous manuscript}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Item-level analyses of language-model benchmarks, such as item response
+models, label-error screens, and differential item functioning, are usually
+run as if every evaluated model were an independent respondent. Leaderboard
+panels are not like that: most entries share a base model with many others. We
+work out what this does to uncertainty and how to repair it.
+We take lineage from repository metadata and not from responses, because a
+family of related models and an extra ability dimension are observationally
+equivalent in a response matrix. Of \NModels{} archived Open LLM Leaderboard
+entries, \LineageCoverage\% can be assigned to a base-model family and
+\LargestFamilyShare\% belong to a single one; by family sizes the panel is as
+concentrated as about \EffClusters{} equal families, and its
+\VtwoModels-entry successor as about \VtwoClusters. Models that share only a
+base model answer nearly as alike as declared relatives.
+The resulting variance inflation depends on the statistic, so no single
+``effective number of models'' exists; we derive it for item difficulty,
+discrimination, and inter-item association. In a simulation matched to the
+archive's family sizes and within-family similarity, nominal 95\% intervals for
+item difficulty cover their target
+\SimNaiveCoverShared--\SimNaiveCoverUnrel\% of the time. Resampling whole
+families restores \SimBootCoverLo--\SimBootCoverHi\%, and weighting families
+equally lowers the variance of difficulty estimates
+\WeightGainLo--\WeightGainHi-fold.
+On the archive's real responses, family-level standard errors of item--rest
+correlations are \ScreenSEMin--\ScreenSEMax{} times model-level ones, and
+\ScreenLostMin--\ScreenLostMax\% of the items a screen flags as significantly
+negative lose significance. Under a standard test for differential item
+functioning, two arbitrary collections of unrelated base models differ on
+\VrPlaceboMin--\VrPlaceboMax\% of items on a newer leaderboard, so claims
+about named families need a lineage baseline. Against documented label
+errors, lineage-aware scores rank flawed items no better than the usual
+screen: lineage changes how much evidence a flag carries, not which items to
+inspect first. We release family labels and a small tool.
+\end{abstract}
+
+\section{Introduction}
+Comparative biology learned in the 1980s that species are not independent data
+points: closely related species share traits by descent, so treating them as
+separate observations overstates the evidence for any cross-species pattern
+\citep{felsenstein1985phylogenies}. Item-level evaluation of language models is
+in the same position. A response matrix records which of $M$ models answered
+which of $J$ benchmark questions correctly. The standard errors and tests used
+with item response theory, label-error screens, benchmark compression, and
+differential item functioning are derived for $M$ respondents drawn
+independently from a population
+\citep{polo2024tinybenchmarks,kipnis2025metabench,truong2025fantastic,land2026auditing,dif2026llm}.
+The respondents are not independent. Public leaderboards consist largely of
+derivatives of a small number of base models, and even curated panels contain
+several releases of the same model line.
+
+The concern is recognised, and existing remedies work on responses or names.
+\citet{truong2025fantastic} note that shared training data can shrink the
+effective sample size, and examine sensitivity to the composition of the model
+pool by creator, size, and release date. \citet{land2026auditing} drop models
+whose response vectors are nearly identical and state that, among the 114 that
+remain, ``the effective number of independent respondents remains below 114,''
+leaving the number open. \citet{neartied2026rankings} split models by owner
+and thin to one checkpoint per owner and named family. Model similarity itself
+has been measured: errors are correlated across models and more so among
+stronger ones \citep{kim2025correlated,goel2025great}, and benchmark
+prediction depends on how similar target models are to source models
+\citep{zhang2025benchmarkprediction}. What is missing is the step from
+``models are similar'' to ``this standard error is too small by this factor,''
+together with a way to obtain that factor that can be trusted. This paper
+supplies both, and shows why estimating the dependence from the responses
+themselves is unreliable.
+
+\paragraph{Contributions.}
+\begin{enumerate}\itemsep2pt
+\item \textbf{Variance inflation is statistic-specific
+  (\S\ref{sec:theory}).} For a linear item statistic the inflation is a
+  quadratic form in the model--model residual correlation matrix along the
+  statistic's weight vector; for an association between items it is governed by
+  the sum of \emph{squared} correlations. A single effective sample size
+  therefore misstates uncertainty for most statistics.
+\item \textbf{Responses alone do not identify the dependence
+  (\S\ref{sec:ident}).} A family random-effects model is a multidimensional
+  response model whose extra person coordinates are family indicators; the two
+  differ only in which quantities are resampled. In simulation, grouping models
+  by response similarity fails in both directions.
+\item \textbf{Lineage from outside the responses (\S\ref{sec:lineage}).}
+  Declared parent chains, configuration signatures, and repository names
+  recover a base-model family for \LineageCoverage\% of a \NModels-entry
+  archive. The labels never see a benchmark response, and they predict
+  response similarity on that archive, on a curated panel, and on a newer
+  leaderboard.
+\item \textbf{Size of the problem and working corrections
+  (\S\ref{sec:size}).} With the archive's family layout and its observed
+  within-family similarity, intervals that ignore lineage are badly
+  miscalibrated for difficulty and, when relatives share ability, for
+  discrimination and item--rest correlation as well. A bootstrap over whole
+  families restores most of the coverage, and weighting families equally
+  recovers precision that the unweighted panel throws away.
+\item \textbf{Re-audits of two procedures (\S\ref{sec:screens}).} Against a
+  model-level bootstrap, family-level testing removes
+  \ScreenLostMin--\ScreenLostMax\% of the items a screen flags as significantly
+  negative. Under a standard test
+  for differential item functioning, arbitrary collections of unrelated base
+  models already differ on many items, and effects found for a named family
+  are mostly specific to individual base models. Against documented label
+  errors, lineage-aware scores do not rank flawed items better than the usual
+  screen.
+\end{enumerate}
+
+We do not propose a new psychometric model or a new error detector.
+Cluster-robust inference
+\citep{liang1986longitudinal,cameron2015practitioner,mackinnon2023cluster},
+design effects \citep{kish1965survey}, and blocked validation
+\citep{roberts2017crossvalidation} are established. The contribution is to
+work out what they imply for item-level evaluation of language models, to show
+why the cluster labels should come from lineage and not from behaviour, and to
+measure the consequences on public data.
+
+\section{Related work}\label{sec:related}
+\paragraph{Item-level evaluation.}
+IRT-based analysis and compression of LLM benchmarks
+\citep{lalor2016irt,rodriguez2021informative,polo2024tinybenchmarks,kipnis2025metabench,hofmann2025fluid,zhou2026lost},
+label-error screening \citep{northcutt2021labelerrors,gema2024mmlu,truong2025fantastic,land2026auditing},
+option-level models \citep{fei2026everywrong}, and reliability of IRT
+estimation \citep{jiang2026trustirt} all condition on a panel of models. To
+our knowledge none reports item-level uncertainty with lineage as the sampling
+unit.
+
+\paragraph{Model families in item-level analysis.}
+Two concurrent studies are closest. \citet{dif2026llm} apply Mantel--Haenszel
+differential item functioning to Llama and Qwen models on six benchmarks and
+find many items that favour one family at equal total score.
+\citet{neartied2026rankings} estimate residual item-by-family effects after a
+multidimensional adjustment, on five benchmarks drawn from RouterEval
+\citep{huang2025routereval}, and show that near-tied cross-family rankings can
+reverse when low-DIF items are selected. They assign families by model name,
+split by model owner, cap each owner--family pair at five checkpoints, and
+rank one representative per pair. Both treat item-by-family effects as fixed
+quantities to be estimated and ask what they do to scores and rankings. We
+treat the same effects as a source of sampling dependence and ask what they do
+to the uncertainty of item statistics; Proposition~\ref{prop:equiv} makes the
+relation between the two views exact.
+\todo{We read the method of \citet{neartied2026rankings} in full but only the abstract of \citet{dif2026llm}; read the latter in full before submission.}
+
+\paragraph{Model similarity and lineage.}
+\citet{yax2025phylolm} reconstruct model phylogenies from outputs and hold out
+whole families when predicting benchmark scores. \citet{kim2025correlated} and
+\citet{goel2025great} measure correlated errors across more than a hundred
+models each. \citet{zhang2025benchmarkprediction} show that benchmark
+prediction depends on model similarity and degrades when extrapolating to
+stronger models. \citet{laufer2025anatomy} and \citet{horwitz2025atlas} build
+lineage graphs of public models from repository metadata.
+\citet{kohli2026nine} computes an effective number of votes for panels of
+correlated LLM judges. We use metadata lineage for a different purpose: as the
+sampling unit for item statistics.
+
+\paragraph{Dependent observations.}
+Design effects \citep{kish1965survey}, cluster-robust variance and its
+small-cluster corrections
+\citep{liang1986longitudinal,cameron2015practitioner,carter2017asymptotic,mackinnon2023cluster},
+effective degrees of freedom for second-moment statistics
+\citep{bretherton1999effective}, blocked validation
+\citep{roberts2017crossvalidation}, phylogenetic comparative methods
+\citep{felsenstein1985phylogenies}, and duplicate leakage
+\citep{allamanis2019duplication,kapoor2022leakage} supply the statistical
+tools. \citet{miller2024errorbars} cluster \emph{questions} when comparing
+models; we cluster \emph{models} when studying questions.
+
+\section{Setting and estimands}\label{sec:setup}
+Let $X\in\{0,1\}^{M\times J}$ be a complete response matrix. Each item $j$ has
+a response function $P_{ij}=\Pr(X_{ij}=1)$ that depends on a scalar ability
+proxy $z_i$, the logit of model $i$'s accuracy standardised within the panel.
+We study four statistics per item: difficulty (the logistic intercept, that is,
+the log-odds of a correct answer at the panel's mean ability), discrimination
+(the logistic slope on $z$), the item--rest correlation used by screening
+methods, and the residual association between two items after removing
+ability.
+
+Uncertainty is defined with respect to a sampling model for \emph{models}. The
+naive model draws the $M$ rows independently. The lineage model draws
+\emph{families} independently and lets models within a family share
+item-level deviations. The \emph{variance inflation} (design effect) of a
+statistic is the ratio of its variance under the lineage model to its variance
+under independence with the same marginal response functions. Which model is
+appropriate is a statement about the target population, taken up in
+\S\ref{sec:ident}.
+
+\section{Variance inflation depends on the statistic}\label{sec:theory}
+Fix an item $j$ and let $e_j\in\mathbb R^M$ be its residuals across models
+under the sampling model, with mean zero, unit variances, and
+$\Cov(e_j)=R$, a correlation matrix with entries $\rho_{ik}$. Independence
+corresponds to $R=I$.
+
+\begin{proposition}[Linear statistics]\label{prop:linear}
+For $T=w^\top e_j$ with fixed weights $w$,
+$\deff(w)=w^\top R\,w/w^\top w$. For equal weights ($w\propto\mathbf 1$, the
+item mean) this is $1+M^{-1}\sum_{i\ne k}\rho_{ik}$; for weights proportional
+to centred ability ($w\propto z-\bar z$) it is the same quadratic form along
+the ability direction.
+\end{proposition}
+\noindent\emph{Proof.} $\Var(w^\top e_j)=w^\top R\,w$, and under independence
+$R=I$. \qed
+
+\begin{proposition}[Association statistics]\label{prop:assoc}
+For items $j\neq l$ whose residual vectors are independent of each other,
+each with mean zero and covariance $R$,
+$\Var(e_j^\top e_l)=\tr(R^2)$, so
+$\deff_{\mathrm{assoc}}=1+M^{-1}\sum_{i\ne k}\rho_{ik}^2$.
+\end{proposition}
+\noindent\emph{Proof.} The cross-product has mean zero, and
+$\mathbb E[(e_j^\top e_l)^2]=\mathbb E[e_j^\top(e_le_l^\top)e_j]
+=\mathbb E[e_j^\top R\,e_j]=\tr(R^2)=M+\sum_{i\ne k}\rho_{ik}^2$; under
+independence $\tr(I)=M$. \qed
+
+\begin{corollary}[Families]\label{cor:families}
+If models fall into families of sizes $m_g$ with within-family correlation
+$\rho_g\in[0,1]$ and no correlation across families, then
+\[
+\deff_{\mathrm{mean}}=1+\frac1M\sum_g m_g(m_g-1)\rho_g,\qquad
+\deff_{\mathrm{assoc}}=1+\frac1M\sum_g m_g(m_g-1)\rho_g^2
+\le\deff_{\mathrm{mean}} .
+\]
+With $\rho_g=1$ both reduce to Kish's $M^{-1}\sum_g m_g^2$
+\citep{kish1965survey}. For fixed abilities the slope-type inflation is
+$1+\sum_g\rho_g\sum_{i\ne k\in g}\tilde z_i\tilde z_k/\sum_i\tilde z_i^2$ with
+$\tilde z=z-\bar z$: equal to one on average when relatives have unrelated
+abilities, and large when relatives share ability.
+\end{corollary}
+
+Logistic difficulty and discrimination are not exactly linear statistics: they
+are asymptotically linear in the residuals with item-specific weights, and
+they are estimated on an ability scale that is itself computed from the panel.
+The propositions therefore describe the mechanism; \S\ref{sec:calib} measures
+the estimators as they are used.
+
+Three consequences follow. A panel has no single effective size. Inflation is
+linear in $\rho$ for the item mean, so relatedness too weak to see in any
+pairwise comparison still matters: with $\rho_g=0.1$ in a family of 300, that
+family alone contributes $0.1\times 300\times 299/M$. And the layout enters
+through $\sum_g m_g^2$. We call $G^\ast=M^2/\sum_g m_g^2$ the
+\emph{effective number of families}: the number of equal-sized families with
+the same concentration. It is the Kish effective sample size only in the
+limit $\rho_g=1$, and a simplification of the effective number of clusters of
+\citet{carter2017asymptotic}; we use it as a description of the panel, not as
+a count of independent models.
+
+\begin{remark}[In-sample degeneracy]\label{rem:degenerate}
+The score equations of a fitted item response function make each item's
+residuals sum to zero across models and be orthogonal to ability. Summing or
+ability-weighting an estimated residual correlation matrix over \emph{all}
+pairs therefore returns approximately zero, whatever the dependence. The
+inflation of difficulty and discrimination can be estimated only by
+restricting to pairs that a cluster structure declares related, which is why
+cluster-robust estimators need the family labels as an input.
+\end{remark}
+
+\section{Responses alone do not identify the dependence}\label{sec:ident}
+Fix item parameters $(a_j,b_j)$ and a partition $g$ of the models into $G$
+groups, and consider two sampling models for a panel.
+\begin{itemize}\itemsep1pt
+\item[\textbf{F}] \emph{Families are sampled.} Each group $g$ draws item
+  effects $u_{g\cdot}\in\mathbb R^J$ independently from a distribution $Q$;
+  each member draws $\theta_i$ independently; responses are independent
+  Bernoulli with $\operatorname{logit}P_{ij}=a_j(\theta_i-b_j)+u_{g(i)j}$.
+\item[\textbf{D}] \emph{Profiles are fixed.} There are $G$ fixed profiles with
+  loadings $C\in\mathbb R^{G\times J}$; model $i$ has profile $g(i)$ and draws
+  $\theta_i$ independently; responses are independent Bernoulli with
+  $\operatorname{logit}P_{ij}=a_j(\theta_i-b_j)+C_{g(i)j}$. This is a
+  multidimensional response model whose extra person coordinates are profile
+  indicators.
+\end{itemize}
+
+\begin{proposition}[Observational equivalence]\label{prop:equiv}
+(i) The law of the response matrix under F is the mixture, over $u\sim Q^{G}$,
+of its laws under D with $C=u$. Consequently any test of ``D holds for some
+$C$'' that has level $\alpha$ for every $C$ has power at most $\alpha$ against
+F: a single response matrix cannot show that item-by-group effects are
+resampled with the groups and not fixed features of the population.
+(ii) Under D the rows of $X$ are independent given $C$, so an item mean has
+its independent-sampling variance. Under F, for the item mean $\hat p_j$,
+$\Var(\hat p_j)\ge\Var\big(\mathbb E[\hat p_j\mid u]\big)
+=M^{-2}\sum_g m_g^2\Var(\mu_{gj})$ with
+$\mu_{gj}=\mathbb E[X_{ij}\mid u_{gj}]$, a term proportional to $1/G^\ast$
+that does not vanish as $M$ grows unless $G^\ast$ grows too.
+\end{proposition}
+\noindent\emph{Proof.} (i) Conditional on $u$, model F is model D with $C=u$,
+so the F law is the stated mixture; a test with level $\alpha$ under every
+component has rejection probability at most $\alpha$ under the mixture.
+(ii) Under D the rows are independent given the fixed $C$. Under F the law of
+total variance gives the bound, and
+$\mathbb E[\hat p_j\mid u]=M^{-1}\sum_g m_g\mu_{gj}$ with the $\mu_{gj}$
+independent across groups. \qed
+
+The two models describe different target populations. D asks how these
+particular base models respond; F asks about model lineages in general, of
+which the observed base models are a sample. The data cannot choose between
+them, so the analyst must. Differential item functioning across named
+families \citep{dif2026llm,neartied2026rankings} adopts the fixed view of the
+same structure: its item-by-family effects are our $u$.
+
+A second obstacle is that the groups themselves are not observed. For an
+unnormalised residual matrix $E$,
+$\tr\big((EE^\top)^2\big)=\tr\big((E^\top E)^2\big)$: the total squared
+similarity between models equals the total squared association between items.
+A low-rank component of $E$ is simultaneously ``some models behave alike'' and
+``some items measure something extra,'' so similarity in responses does not by
+itself indicate lineage.
+
+\paragraph{Simulation.}
+Table~\ref{tab:ident} shows what this means for one natural response-only
+approach. We simulate 300 models and 800 items under a two-parameter logistic
+model, with families of sizes 40, 25, 15, two of 10, eight of 5, twenty of 2,
+and 120 singletons. True inflation is the median over items of the Monte Carlo
+variance ratio against an independent panel. We compare it with (i) the
+expressions of Corollary~\ref{cor:families} evaluated with the true family
+labels and (ii) two response-only estimators: cluster-robust variance with
+groups found by average-linkage clustering of residual correlations at a
+threshold of 0.35, and the sum over all model pairs of the product of residual
+correlations computed on two disjoint halves of the items.
+\input{tab_ident}
+Given the true labels, the expressions track difficulty and association when
+families are present. Without labels, weak families go undetected (true
+difficulty inflation \IdentMissTruth$\times$, estimate
+\IdentMissEst$\times$), and a strong second ability dimension among
+independent models is reported as \IdentFalseEst$\times$ inflation when the
+truth is \IdentFalseTruth$\times$. A lower clustering threshold would trade
+one error for the other. Any study that groups models by behavioural
+similarity and treats the groups as lineages inherits this trade-off.
+
+\section{Lineage from outside the responses}\label{sec:lineage}
+\paragraph{Archive.} We use \NModels{} model entries from the Open LLM
+Leaderboard archive \citep{openllmleaderboard}, evaluated with the
+\texttt{lm-evaluation-harness} \citep{eval-harness} on ARC-Challenge,
+HellaSwag, TruthfulQA, WinoGrande, and GSM8K
+\citep{clark2018arc,zellers2019hellaswag,lin2022truthfulqa,sakaguchi2021winogrande,cobbe2021gsm8k}.
+Items answered identically by every model are dropped, and each benchmark uses
+the entries with complete responses.
+
+\paragraph{Recovery.} For every entry we query public Hugging Face repository
+metadata and use three signals, none of which involves a benchmark response:
+(i) declared parents, from the model card's base-model field and adapter
+configuration, followed for up to four hops; (ii) a configuration signature,
+namely architecture class, hidden size, layer count, and, where several base
+models share that shape, feed-forward width and vocabulary size;
+(iii) tokens in the repository name. A model is assigned to a
+\emph{base-model family} by signature when its configuration is readable,
+otherwise by the signature or name of its declared root, otherwise by its own
+name.
+\input{tab_coverage}
+
+Fine-grained lineage is sparse: only \DeclaredShare\% of entries declare a
+parent. Family membership is not: \LineageCoverage\% can be assigned
+(Table~\ref{tab:coverage}). The panel is concentrated. \LargestFamily{}
+entries (\LargestFamilyShare\%) are assigned to the Mistral-7B family; the
+next three families have \SecondFamily, \ThirdFamily, and \FourthFamily{}
+entries, and there are \NFamilies{} labelled families in all, giving
+$G^\ast\approx\EffClusters$.
+
+\begin{figure}[!htb]\centering
+\includegraphics[width=\linewidth]{figures/f3_growth.pdf}
+\caption{The \GrowthDated{} archive entries whose repository creation date is
+known, in order of creation; the axis starts in March 2023, by which date the
+earliest repositories are already counted. (a) Entries and families, with
+each unassigned entry counted as its own family. (b) Effective number of
+families $G^\ast=M^2/\sum_g m_g^2$.}
+\label{fig:growth}
+\end{figure}
+
+More entries did not mean more effective families. Ordering the
+\GrowthDated{} entries with a known repository creation date,
+$G^\ast$ peaks at about \GrowthPeak{} after \GrowthPeakEntries{} entries, a
+stage dominated by base models that predate the leaderboard, and has stayed
+below \GrowthCeiling{} since about \GrowthSettle{} entries while the count
+grew to \GrowthDated{} (Figure~\ref{fig:growth}). New families kept arriving,
+but derivatives of a few base models arrived as fast. Creation dates stand in
+for submission order and are missing for deleted repositories, most of which
+are unassigned, which is why $G^\ast$ for the dated subset
+(\GrowthFinalClusters) is below the full archive's.
+
+\paragraph{A newer leaderboard.}
+The successor leaderboard \citep{fourrier2024leaderboardv2} ran from June 2024
+to March 2025 and recorded architecture and parameter count for each of its
+\VtwoModels{} entries. With families defined from those two fields, it has
+\VtwoFamilies{} families, the largest holding \VtwoLargestShare\% of entries,
+and $G^\ast\approx\VtwoClusters$; $G^\ast$ stayed between \VtwoClustersMin{}
+and \VtwoClustersMax{} from its first thousand entries onward. This
+definition is coarser than the archive's, but for the \VfModels{} entries
+whose responses we analyse in \S\ref{sec:newer}, the archive's
+configuration-based definition gives nearly the same value
+($G^\ast\approx\VfEff$).
+Table~\ref{tab:panels} sets three panels side by side: over a thousand and
+several thousand entries are as concentrated as ten to fifteen equal
+families, and a curated panel of 100 is less concentrated than either.
+\input{tab_panels}
+
+\begin{figure}[!htb]\centering
+\includegraphics[width=\linewidth]{figures/f1_lineage.pdf}
+\caption{(a) Base-model families in the archive, from repository metadata.
+(b) Mean ability-adjusted residual correlation between pairs of models. Models
+that share a base model answer alike whether or not a link is declared; models
+from different families do not. Values are in Table~\ref{tab:validation}.}
+\label{fig:lineage}
+\end{figure}
+
+\paragraph{Validation against responses.}
+The labels were built without responses, so their relation to response
+similarity is a test and not a tautology (Figure~\ref{fig:lineage},
+Table~\ref{tab:validation}).
+\input{tab_validation}
+Models that share only a base model are almost as alike as declared relatives.
+Relatedness is therefore much more widespread than model cards document, and
+the pairwise correlations involved, around 0.1, are the weak and widespread
+kind that Corollary~\ref{cor:families} says matters for difficulty and that
+threshold-based grouping of responses does not see (Table~\ref{tab:ident},
+scenario B).
+
+\section{How large is the problem?}\label{sec:size}
+\subsection{A simulation matched to the archive}\label{sec:calib}
+The true inflation on real data is unknown, so we first measure it in a
+simulation that copies the archive's family layout exactly (\NModels{} models,
+the same family sizes) and sets the spread of family-by-item effects so that
+the mean within-family residual correlation falls within the range observed in
+Table~\ref{tab:validation}. We vary whether relatives share ability (half of
+the ability variance common to the family) and whether family effects are
+concentrated in a subset of items. True inflation is the median over items of
+the Monte Carlo variance ratio against a panel of independent models with the
+same marginals. Because ability is standardised within each panel, the point
+at which difficulty is measured moves when a large family's ability moves; we
+therefore also report the inflation with the ability scale held fixed across
+replicates.
+\input{tab_simtruth}
+\input{tab_simcover}
+\begin{figure}[!htb]\centering
+\includegraphics[width=0.8\linewidth]{figures/f2_coverage.pdf}
+\caption{Share of nominal 95\% intervals for item difficulty that contain
+their target, in a simulation with the archive's family layout and
+within-family similarity. The cluster jackknife uses the $t$ critical value of
+Table~\ref{tab:simcover}. Values are in that table.}
+\label{fig:coverage}
+\end{figure}
+
+Table~\ref{tab:simtruth} shows the statistic-specific pattern predicted by
+Corollary~\ref{cor:families}. With unrelated abilities, the variance of the
+median item's difficulty is inflated \SimTrueDiffUnrel-fold while its
+item--rest correlation is inflated \SimTrueItemRestUnrel-fold. When relatives
+share ability, discrimination and the item--rest correlation are inflated too
+(\SimTrueDiscrShared$\times$ and \SimTrueItemRestShared$\times$), and
+difficulty inflation rises to \SimTrueDiffShared$\times$. That rise is the
+moving reference point: with the ability scale held fixed, difficulty
+inflation is \SimFixDiffUnrel$\times$ and \SimFixDiffShared$\times$ in the two
+scenarios, and when family effects are concentrated in a minority of items the
+median item's fixed-scale inflation is \SimUnevenFix$\times$. None of these is an effective sample size for the panel; they are
+properties of one statistic for a typical item.
+
+Table~\ref{tab:simcover} and Figure~\ref{fig:coverage} give the practical
+consequence. The table reports how often a nominal 95\% interval contains the
+long-run mean of the estimator, which isolates the calibration of the standard
+error. Intervals that treat models as independent do so in
+\SimNaiveCoverShared--\SimNaiveCoverUnrel\% of cases for difficulty, against
+\SimNullNaive\% when there are no families, the shortfall from 95\% in that
+case reflecting ability being an estimated proxy. Clustering on the true
+families helps. The cluster jackknife recommended for unbalanced clusters
+\citep{mackinnon2023cluster} reaches \SimCRCoverLo--\SimCRCoverHi\%; replacing
+its normal critical value by a $t$ value on $G^\ast-1$ degrees of freedom, a
+heuristic of ours, gives \SimTCoverLo--\SimTCoverHi\%, accurate when
+relatives have unrelated abilities and short when they share ability, because
+the jackknife conditions on the estimated ability scale. A bootstrap that
+resamples whole families and recomputes ability reaches
+\SimBootCoverLo--\SimBootCoverHi\% in every family scenario. Neither is exact
+with $G^\ast\approx\SimEffClusters$, and the jackknife's estimated inflation
+is below the truth for difficulty (Table~\ref{tab:simtruth}, right); both are
+far closer than the naive analysis.
+
+\paragraph{Other family layouts.}
+How bad the naive analysis is depends on how concentrated the panel is
+(Table~\ref{tab:simlayouts}). With the newer leaderboard's family sizes,
+naive intervals for difficulty cover \LayNewerLo--\LayNewerHi\%, much as on
+the archive layout. With the same number of models spread over 115 families
+of ten they cover \LayBalancedLo--\LayBalancedHi\%, and with the curated
+panel's sizes \LayCuratedLo--\LayCuratedHi\%. Across all four layouts and
+all family scenarios the family bootstrap covers
+\LayBootLo--\LayBootHi\%.
+\input{tab_simlayouts}
+
+\paragraph{Weighting families equally.}
+A simple repair is to give every family the same total weight, of which
+keeping a single model per family is the crudest form (Table~\ref{tab:thin}).
+\input{tab_thin}
+With one model per family the naive intervals are close to nominal
+(\ThinCoverLo--\ThinCoverHi\% for difficulty). For item difficulty the
+reweighted panels are also the more precise ones: against the usual
+equal-weight analysis of all models, one model per family has
+\ThinGainLo--\ThinGainHi{} times lower variance and the full panel with
+families weighted equally \WeightGainLo--\WeightGainHi{} times lower. The gain
+comes from the weights, not from discarding models: the unweighted panel lets
+one lineage carry \LargestFamilyShare\% of the estimate. For discrimination
+the comparison depends on whether relatives share ability, and thinning can
+lose precision. These statements concern the population of lineages; an
+analyst who wants the average over leaderboard entries as they happen to be
+should keep equal weights on models and resample families.
+
+\subsection{Estimates on the archive}\label{sec:archive}
+We compare the cluster jackknife over base-model families with the
+delete-one jackknife for each item's logistic coefficients, using ability
+computed from a disjoint half of the items, and evaluate the association
+expression of Corollary~\ref{cor:families} with a split-item estimate of
+$\rho^2$.
+\input{tab_inflation}
+\input{tab_sensitivity}
+
+The median item's difficulty variance is estimated at
+\InflMedMin--\InflMedMax$\times$ its naive value across benchmarks, and a
+tenth of ARC-Challenge items exceed about \InflARCTop$\times$
+(Table~\ref{tab:inflation}). Inflation is strongly heterogeneous across
+items, so the pooled figures, which weight items by their residual variance,
+are larger than the item medians, and it is the pooled difficulty figure that
+Corollary~\ref{cor:families} bounds below by the association figure. In the
+simulation the same estimator runs below the truth, so these numbers likely
+understate the inflation; we do not attach intervals to them, because with
+$G^\ast\approx\EffClusters$ a resampling distribution of this estimator is
+dominated by whether the largest family is drawn. Taken at face value they
+already imply that nominal 95\% intervals for the median item's difficulty
+would cover \ConsCoverLo--\ConsCoverHi\% of the time. In the simulation
+scenario whose jackknife estimate is closest to the archive's (uneven items,
+estimate \SimUnevenEst$\times$), naive intervals cover \SimUnevenCover\% of the
+time, most of the additional shortfall coming from the ability scale moving
+with the panel's family composition (fixed-scale inflation
+\SimUnevenFix$\times$).
+
+The estimates are stable across item splits and across labelling choices
+(Table~\ref{tab:sensitivity}): removing name-based labels or separating Llama
+generations changes little, dropping unlabelled entries raises the estimate,
+and removing the largest family lowers it without eliminating it.
+
+Inflation is not tied to the screening statistic in a consistent way. The rank
+correlation between an item's difficulty inflation and its item--rest
+correlation is weak on ARC-Challenge, TruthfulQA, and HellaSwag
+($\LinkARC$, $\LinkTruthfulQA$, $\LinkHellaSwag$), clearly negative on
+WinoGrande ($\LinkWinoGrande$), where negatively associated items are also the
+most family-dependent, and positive on GSM8K ($\LinkGSM$), which has almost no
+negatively associated items (Table~\ref{tab:sensitivity}).
+
+\subsection{A curated panel}\label{sec:second}
+The BenchMIRT release \citep{morgan2026benchmirt} provides responses of 100
+models, selected from the newer leaderboard, on sixteen reasoning and safety
+tasks. The same recovery procedure assigns \SecondAssigned{} of the 100 models
+to \SecondFamilies{} families, the largest of size \SecondLargest, giving
+$G^\ast\approx\SecondEffClusters$.
+\input{tab_second}
+Same-family pairs are more alike than different-family pairs on
+\SecondClear{} of \SecondTasks{} tasks and indistinguishable on MATH
+(Table~\ref{tab:second}), with residual correlations of the same order as in
+the archive; each figure rests on \SecondPairs{} same-family pairs. ToxiGen is
+omitted because half of the models answer every item identically. The
+estimated inflation is small, \SecondInflMin--\SecondInflMax$\times$, as
+Corollary~\ref{cor:families} predicts for small families. On this panel,
+curation limited family size; it did not remove relatedness.
+
+\subsection{A newer and larger panel}\label{sec:newer}
+Item-level responses for the newer leaderboard are available from the
+RouterEval release \citep{huang2025routereval}. We use four of its six
+benchmarks, MMLU-Pro, BBH, MATH, and MuSR, with \VrModelsMin--\VrModelsMax{}
+models. Families are defined as on the archive: \VfDirect\% of the models by
+their own configuration signature, a further \VfImputed\% by the signature
+that at least four fifths of the readable models in their
+architecture-and-size group share, and the remaining \VfCoarse\% by
+architecture and size alone. This gives \VfFamilies{} families and
+$G^\ast\approx\VfEff$ (Table~\ref{tab:vtwo}).
+\input{tab_vtwo}
+The patterns of the archive reappear, and more strongly. Same-family pairs
+have residual correlations of \VrSameMin--\VrSameMax, above the archive's
+highest value on \VrSameAbove{} of the \VrTasks{} benchmarks, against values
+near zero for different families. Screening statistics agree less between
+halves of the panel when whole families are held out, in every seed on
+\VrTransferPos{} of the \VrTasks{} benchmarks. Family-level standard errors of
+item--rest correlations are \VrSEMin--\VrSEMax{} times model-level ones,
+against \ScreenSEMin--\ScreenSEMax{} on the archive, and
+\VrLostMin--\VrLostMax\% of the items significant under the model bootstrap
+lose significance on the \VrLostTasks{} benchmarks with enough flags. Part of
+the difference from the archive is size and not stronger relatedness: this
+panel has about \VfPerFamily{} entries per effective family against the
+archive's \ArchPerFamily, and inflation grows with that number
+(Corollary~\ref{cor:families}); splitting every family at random into four
+brings the ratio to \VrSESplitMin--\VrSESplitMax. The estimated difficulty
+inflation for the median item is \VrInflMin--\VrInflMax$\times$. A
+leaderboard more than three times the size of the archive, with newer base
+models, is no closer to independent sampling than the archive was.
+
+\section{Re-auditing two item-level procedures}\label{sec:screens}
+We re-run two kinds of analysis from the literature and ask what a
+lineage-aware analysis changes. We re-run generic procedures, not the cited
+studies' exact pipelines.
+
+\subsection{Significance of screening flags}\label{sec:screening}
+Screens for mislabelled or defective items rest on a negative association
+between an item and the rest of the benchmark
+\citep{truong2025fantastic,land2026auditing}. The cited screens rank or flag
+items by such statistics without a significance test; to ask how much evidence
+a flag carries, we test each corrected item--rest correlation against zero
+(one-sided, 5\% false discovery rate) with three standard errors: the Fisher
+formula, a bootstrap over individual models, and a bootstrap over whole
+base-model families. The model bootstrap ignores lineage and is the baseline
+against which the family bootstrap is read.
+\input{tab_screen}
+Family-level standard errors are \ScreenSEMin--\ScreenSEMax{} times
+model-level ones (Table~\ref{tab:screen}), a variance ratio of
+\ScreenVarMin--\ScreenVarMax, within the range of item--rest inflation across
+the simulation scenarios (\SimItemRestMin--\SimItemRestMax,
+Table~\ref{tab:simtruth}). The model bootstrap itself already flags fewer
+items than the Fisher formula on most benchmarks, which is why it, and not the
+formula, is the baseline. Of the items significant under the model bootstrap,
+\ScreenLostMin--\ScreenLostMax\% are no longer significant under the family
+bootstrap, on the four benchmarks with enough flags to compare; GSM8K has
+almost no negatively associated items.
+The items that lose significance are not thereby shown to be sound; the
+evidence against them is weaker than a model-level test states.
+
+\subsection{Transfer of screening statistics across families}\label{sec:transfer}
+If lineage matters for screening, statistics computed on some families should
+agree less with those computed on others than a random split would suggest.
+In each of 30 seeds, whole base-model families are assigned to two halves of
+the panel; item--rest correlations are computed in each half; and the result
+is compared with the same procedure after family labels are permuted within
+ability deciles, which preserves family sizes and the ability composition of
+the halves.
+\input{tab_transfer}
+
+Rank agreement of item--rest correlations between halves is lower for real
+families than for shuffled families on all five benchmarks, in every seed on
+\TransferRankAllSeeds{} of them (Table~\ref{tab:transfer}). A fixed-budget
+yield, the share of the 100 most negative items in one half that are also
+negative in the other, is less sensitive: it is saturated on HellaSwag and has
+almost no negative items on GSM8K, and its gap is consistent across seeds only
+on ARC-Challenge and WinoGrande. Family-disjoint halves also disagree more
+about raw item accuracy than shuffled halves do. Relatedness therefore has a
+measurable effect on which items a screen ranks as suspicious, concentrated in
+the ranking more than in the top of the list.
+
+\subsection{Differential item functioning between named families}\label{sec:dif}
+Family DIF analyses test whether an item is easier for one named family than
+another at equal total score \citep{dif2026llm,neartied2026rankings}. We apply
+the Mantel--Haenszel procedure, with its usual continuity correction, to the
+archive's Llama families (\DifLlamaBases{} base-model labels) against
+Mistral-7B derivatives, and calibrate it in two ways. Permuting group labels
+across models gives the rate at which the test flags items when there is no
+group structure at all; because of the continuity correction this is below
+the nominal 5\% (without the correction it is
+\DifPermNoCCMin--\DifPermNoCCMax\%). Splitting at random the families with no
+known descent from \emph{either} named group gives a lineage placebo: two
+groups that differ in which base models they contain but not in any named
+property. (Merges and up-scalings of Mistral-7B and Code Llama are removed
+from the placebo pool; unassigned entries enter it as singletons.)
+\input{tab_dif}
+The placebo flags \DifPlaceboMin--\DifPlaceboMax\% of items against
+\DifPermMin--\DifPermMax\% under permutation (Table~\ref{tab:dif}), mostly
+small families and singletons differing somewhat more than chance. The named
+contrast flags \DifNamedMin--\DifNamedMax\%, far above the placebo and still
+\DifNamedFdrMin--\DifNamedFdrMax\% after a false discovery rate that leaves
+almost no placebo flags: differences between these named families are real,
+consistent with \citet{dif2026llm}. What lineage adds is the unit of
+generalisation. Of the items flagged for the Llama families against Mistral,
+\DifRepMin--\DifRepMax\% are significant with the same sign in each of the
+three largest Llama base-model labels taken separately. Smaller groups have
+less power, so the fair comparison is with random splits of the same Llama
+models into groups of the same sizes, where \DifRepNullMin--\DifRepNullMax\%
+are. A named family is thus a collection of base models that behave
+differently from one another, and item-by-family effects are better described
+as item-by-base-model effects.
+
+\citet{dif2026llm} compare Llama and Qwen models, so we repeat the re-audit
+for that pair on the newer leaderboard (Table~\ref{tab:difvtwo}); a model
+counts as Llama or Qwen when its name or declared base says so and its
+architecture class agrees, and the placebo pool consists of the families in
+the remaining architecture classes.
+\input{tab_difvtwo}
+Here the placebo is large: two random collections of base models unrelated to
+either family, such as Mistral, Gemma, and Phi derivatives, differ on
+\VrPlaceboMin--\VrPlaceboMax\% of items, against \VrPermMin--\VrPermMax\%
+under permutation. These are not false positives. They are genuine
+differences between base models, and they are what any two groups of lineages
+will show. The Llama--Qwen contrast flags \VrNamedMin--\VrNamedMax\% and
+exceeds the range of placebo splits on \VrAbove{} of \VrTasks{} benchmarks;
+its flags are significant in each of a family's largest base-model groups (up
+to three) \VrRepMin--\VrRepMax\% of the time, against
+\VrRepNullMin--\VrRepNullMax\% for random splits of the same sizes, and less
+often than the random split in every case. A
+significant Mantel--Haenszel statistic with checkpoints as the unit therefore
+shows that two sets of base models differ, which they nearly always do; to
+attribute an item's behaviour to a named family, the contrast should be read
+against a lineage placebo, or tested with base models as the unit.
+
+\subsection{Do lineage-aware screens find more documented errors?}\label{sec:gold}
+The analyses above concern how much evidence a flag carries. A separate
+question is whether accounting for lineage helps to \emph{find} flawed items.
+GSM8K-Platinum \citep{vendrow2025platinum} re-examined every GSM8K test item;
+we count the \GoldGsmFlawed{} items it removed or revised as flawed, a base
+rate of \GoldGsmBase\%, and ask how well screening scores computed from the
+archive's responses separate them from the rest (Table~\ref{tab:gold}).
+\input{tab_gold}
+The usual screen works: ranking items by item--rest correlation gives an AUROC
+of \GoldGsmAuroc, and \GoldGsmTop\% of its 50 most suspicious items are
+documented as flawed. No lineage-aware variant ranks better. Weighting
+families equally or keeping one model per family is indistinguishable from the
+usual screen, and dividing by the family-level standard error is worse on
+this benchmark (\GoldGsmFamAuroc). \GoldMmluText
+Lineage therefore changes how many items one may call significant, not which
+items to inspect first. Our recommendation follows: rank by the usual
+statistic, and use family-level uncertainty to decide how far down the list
+the evidence reaches.
+
+\section{Recommendations}\label{sec:recs}
+\begin{enumerate}\itemsep2pt
+\item Report the lineage composition of the model panel: number of families,
+  size of the largest, share unassigned, and $G^\ast=M^2/\sum_g m_g^2$.
+\item Take family labels from metadata, not from response similarity.
+\item For claims about models in general, weight families equally; keeping one
+  model per family is the simplest version, though it can cost precision for
+  discrimination.
+\item Rank items for inspection by the usual screening statistic; lineage does
+  not improve the ranking (\S\ref{sec:gold}).
+\item Report item-level uncertainty by resampling whole families and
+  re-estimating abilities in each resample, separately for each statistic
+  used, and expect such intervals to remain somewhat too narrow when one
+  family dominates.
+\item Validate item-level findings by holding out whole families
+  \citep[as][do for score prediction]{yax2025phylolm}, against a
+  shuffled-family control, and read family-level contrasts against a lineage
+  placebo.
+\item Do not summarise a panel by one effective sample size.
+\end{enumerate}
+
+\section{Limitations}\label{sec:limitations}
+Base-model family is a coarse notion of lineage and is unavailable for
+\UnassignedShare\% of entries, which we treat as unrelated; this understates
+dependence. Most assignments rest on configuration shape, which cannot
+separate base models with identical shapes (for example successive Llama
+generations of one size), and metadata for deleted repositories is lost. The
+lineage model treats families as the sampling units, which is a choice of
+target population and not a fact the data can establish (\S\ref{sec:ident}).
+The size of the problem is established in simulation: the true inflation on
+real data is not observed, the simulation's family effects are independent
+across items and identical in distribution across families, and its coverage
+figures rest on \SimReps{} replicates (40 for the bootstrap). No corrected interval is
+exact when one family holds \LargestFamilyShare\% of the panel. The archive is
+historical and its harness settings are not fully recoverable. The curated
+panel is a subset of the newer leaderboard, which ends in March 2025; for
+about a quarter of that leaderboard's models the configuration is no longer
+readable and the family is inferred from architecture and parameter count. We ran no
+new model inference and no human adjudication; the comparison with documented
+errors covers \GoldBenchmarks{} and finds no ranking benefit from lineage.
+
+\paragraph{Reproducibility.}
+All tables, figures, and in-text numbers are generated by scripts from stored
+result files; lineage metadata was retrieved on 15 November 2026 and is stored
+with the code. The family labels for the archive and the curated panel and the
+estimators are packaged as a small Python tool, \texttt{modelkin}, whose
+command-line audit reproduces the archive's screening and similarity figures
+up to bootstrap noise.
+
+\bibliographystyle{tmlr}
+\bibliography{refs}
+
+\ifdraft
+\appendix
+\section{Evidence status (working notes; not part of the paper)}
+\begin{tabular}{p{0.44\linewidth}p{0.50\linewidth}}
+\toprule
+Claim & Status on 15 November 2026\\
+\midrule
+Propositions 1--3, Corollary 1 & Re-derived; formulas checked by Monte Carlo by two independent reviewers\\
+Table~\ref{tab:ident} & 100 replicates, one layout, one clustering threshold\\
+Tables~\ref{tab:simtruth}--\ref{tab:simlayouts} & 120--300 replicates; bootstrap on 25--50 replicates and 120 items\\
+Table~\ref{tab:thin} & 80 replicates; keeps the first member of each family\\
+Tables~\ref{tab:coverage}--\ref{tab:validation} & One metadata snapshot; counts reproduced independently\\
+Figure~\ref{fig:growth} & Repository creation dates, not submission dates\\
+Tables~\ref{tab:inflation}--\ref{tab:sensitivity} & 20 item splits; no intervals\\
+Table~\ref{tab:second} & 10 item splits; 153 same-family pairs\\
+Tables~\ref{tab:screen}, \ref{tab:transfer} & 1,000 resamples (500 on HellaSwag); 30 seeds\\
+Tables~\ref{tab:vtwo}, \ref{tab:difvtwo} & One run; 200--400 resamples; 10 seeds; 40 placebo splits; configuration files fetched 15 November 2026 (77\% readable)\\
+Table~\ref{tab:dif} & 100 placebo splits, 20 subsamples\\
+Table~\ref{tab:gold} & Published annotations; items aligned by question text (MMLU: 98 annotated items dropped as unmatched or duplicated)\\
+Models from 2025--26 & No public item-level panel found; newest ends March 2025\\
+\citet{dif2026llm} & Abstract only (full text behind a browser check)\\
+Human review of text and proofs & Not done\\
+\bottomrule
+\end{tabular}
+\fi
+\end{document}

@@ -1,0 +1,333 @@
+{
+ "musr": {
+  "M": 3794,
+  "J": 756,
+  "family_definition": "configuration signature",
+  "families": 367,
+  "largest_share": 0.2282551396942541,
+  "effective_clusters": 13.884406221846683,
+  "r_same": 0.19015542924610754,
+  "r_diff": -0.014550817495766788,
+  "infl_difficulty_median": 35.12161278818929,
+  "infl_difficulty_p90": 114.19971276387446,
+  "infl_discrimination_median": 12.101236306450012,
+  "screen": {
+   "M": 3794,
+   "items": 756,
+   "negative": 267,
+   "fisher": 205,
+   "model": 213,
+   "family": 127,
+   "survive_vs_model": 0.596244131455399,
+   "se_family_over_model": 3.890553861443647,
+   "se_family_over_model_negative": 3.628106532230598,
+   "se_model_over_fisher": 0.9992713930251051,
+   "B": 400
+  },
+  "se_sensitivity": {
+   "1": {
+    "se_ratio": 3.7091266035765136,
+    "effective_clusters": 13.884406221846683
+   },
+   "2": {
+    "se_ratio": 2.6868796826082098,
+    "effective_clusters": 27.673412104876633
+   },
+   "4": {
+    "se_ratio": 2.050344276712209,
+    "effective_clusters": 54.745434215430485
+   }
+  },
+  "dif": {
+   "n_llama": 699,
+   "n_qwen": 649,
+   "group": 200,
+   "placebo_models": 1134,
+   "placebo_families": 179,
+   "perm": 0.03920708723662099,
+   "named": 0.49641542991998433,
+   "named_bh": 0.4434149677429088,
+   "placebo_bh": 0.3387346343926656,
+   "placebo_largest_share": 0.24779541446208111,
+   "placebo_mean": 0.41425749237315096,
+   "placebo_lo": 0.34881949349207947,
+   "placebo_hi": 0.4743768437937901,
+   "replication": {
+    "Llama": {
+     "bases": [
+      "llama3-8b",
+      "LlamaForCausalLM|h3072|L28|v128k",
+      "llama3-70b"
+     ],
+     "same_sign": 0.45401174168297453,
+     "significant": 0.16046966731898238,
+     "null": 0.4819960861056751
+    },
+    "Qwen": {
+     "bases": [
+      "Qwen2ForCausalLM|h3584|L28|v152k",
+      "Qwen2ForCausalLM|h896|L24|v151k",
+      "Qwen2Model|h896|L24|v151k"
+     ],
+     "same_sign": 0.5538160469667319,
+     "significant": 0.2602739726027397,
+     "null": 0.5369863013698629
+    }
+   }
+  },
+  "transfer": {
+   "real": 0.8545982213616554,
+   "shuffled": 0.9749632492650875,
+   "positive_seeds": 10,
+   "seeds": 10
+  }
+ },
+ "math": {
+  "M": 3794,
+  "J": 1278,
+  "family_definition": "configuration signature",
+  "families": 367,
+  "largest_share": 0.2282551396942541,
+  "effective_clusters": 13.884406221846683,
+  "r_same": 0.03680636449313811,
+  "r_diff": 0.0140599284627873,
+  "infl_difficulty_median": 4.032162821209603,
+  "infl_difficulty_p90": 17.345419115229433,
+  "infl_discrimination_median": 3.9511315820640487,
+  "screen": {
+   "M": 3794,
+   "items": 1278,
+   "negative": 13,
+   "fisher": 0,
+   "model": 0,
+   "family": 2,
+   "survive_vs_model": 0.0,
+   "se_family_over_model": 2.593038513052387,
+   "se_family_over_model_negative": 1.1414260940660004,
+   "se_model_over_fisher": 1.3301717541378304,
+   "B": 400
+  },
+  "se_sensitivity": {
+   "1": {
+    "se_ratio": 2.4310436303808616,
+    "effective_clusters": 13.884406221846683
+   },
+   "2": {
+    "se_ratio": 1.7734544478863299,
+    "effective_clusters": 27.67649818495047
+   },
+   "4": {
+    "se_ratio": 1.5558573991549949,
+    "effective_clusters": 54.87608460283331
+   }
+  },
+  "dif": {
+   "n_llama": 699,
+   "n_qwen": 649,
+   "group": 200,
+   "placebo_models": 1134,
+   "placebo_families": 179,
+   "perm": 0.023431116227722086,
+   "named": 0.17024619678793002,
+   "named_bh": 0.05749281382321625,
+   "placebo_bh": 0.027621448898067176,
+   "placebo_largest_share": 0.24779541446208111,
+   "placebo_mean": 0.12010789279238128,
+   "placebo_lo": 0.08053975436328378,
+   "placebo_hi": 0.16942047619973555,
+   "replication": {
+    "Llama": {
+     "bases": [
+      "llama3-8b",
+      "LlamaForCausalLM|h3072|L28|v128k",
+      "llama3-70b"
+     ],
+     "same_sign": 0.722972972972973,
+     "significant": 0.10810810810810811,
+     "null": 0.147972972972973
+    },
+    "Qwen": {
+     "bases": [
+      "Qwen2ForCausalLM|h3584|L28|v152k",
+      "Qwen2ForCausalLM|h896|L24|v151k",
+      "Qwen2Model|h896|L24|v151k"
+     ],
+     "same_sign": 0.25900900900900903,
+     "significant": 0.009009009009009009,
+     "null": 0.2259009009009009
+    }
+   }
+  },
+  "transfer": {
+   "real": 0.92022202913518,
+   "shuffled": 0.9774962738833619,
+   "positive_seeds": 10,
+   "seeds": 10
+  }
+ },
+ "bbh": {
+  "M": 3794,
+  "J": 5761,
+  "family_definition": "configuration signature",
+  "families": 367,
+  "largest_share": 0.2282551396942541,
+  "effective_clusters": 13.884406221846683,
+  "r_same": 0.19023808763540537,
+  "r_diff": -0.014926375545181713,
+  "infl_difficulty_median": 44.588387535523175,
+  "infl_difficulty_p90": 143.33810007879399,
+  "infl_discrimination_median": 20.20762683085082,
+  "screen": {
+   "M": 3794,
+   "items": 5761,
+   "negative": 1171,
+   "fisher": 992,
+   "model": 982,
+   "family": 564,
+   "survive_vs_model": 0.5743380855397149,
+   "se_family_over_model": 4.530124712944673,
+   "se_family_over_model_negative": 3.973556834169799,
+   "se_model_over_fisher": 1.017752553700957,
+   "B": 200
+  },
+  "se_sensitivity": {
+   "1": {
+    "se_ratio": 4.465265397668189,
+    "effective_clusters": 13.884406221846683
+   },
+   "2": {
+    "se_ratio": 3.2576961868647287,
+    "effective_clusters": 27.584002759466504
+   },
+   "4": {
+    "se_ratio": 2.405653481235971,
+    "effective_clusters": 55.03217568166873
+   }
+  },
+  "dif": {
+   "n_llama": 699,
+   "n_qwen": 649,
+   "group": 200,
+   "placebo_models": 1134,
+   "placebo_families": 179,
+   "perm": 0.034716562759166035,
+   "named": 0.525715391690293,
+   "named_bh": 0.4685712417307951,
+   "placebo_bh": 0.22864005028690232,
+   "placebo_largest_share": 0.24779541446208111,
+   "placebo_mean": 0.3368056548424739,
+   "placebo_lo": 0.20923884742232252,
+   "placebo_hi": 0.4274822079500087,
+   "replication": {
+    "Llama": {
+     "bases": [
+      "llama3-8b",
+      "LlamaForCausalLM|h3072|L28|v128k",
+      "llama3-70b"
+     ],
+     "same_sign": 0.45489351519502275,
+     "significant": 0.10911701363962671,
+     "null": 0.4772194304857621
+    },
+    "Qwen": {
+     "bases": [
+      "Qwen2ForCausalLM|h3584|L28|v152k",
+      "Qwen2ForCausalLM|h896|L24|v151k",
+      "Qwen2Model|h896|L24|v151k"
+     ],
+     "same_sign": 0.5900933237616655,
+     "significant": 0.2725532424024886,
+     "null": 0.5874850442689639
+    }
+   }
+  },
+  "transfer": {
+   "real": 0.8967844145692224,
+   "shuffled": 0.976811761331547,
+   "positive_seeds": 10,
+   "seeds": 10
+  }
+ },
+ "mmlu_pro": {
+  "M": 1822,
+  "J": 12032,
+  "family_definition": "configuration signature",
+  "families": 156,
+  "largest_share": 0.2327113062568606,
+  "effective_clusters": 12.95425775183211,
+  "r_same": 0.27024612041354956,
+  "r_diff": -0.022711409236737336,
+  "infl_difficulty_median": 22.181697535956538,
+  "infl_difficulty_p90": 89.68451357150462,
+  "infl_discrimination_median": 10.744043422497715,
+  "screen": {
+   "M": 1822,
+   "items": 12032,
+   "negative": 2476,
+   "fisher": 1760,
+   "model": 1764,
+   "family": 937,
+   "survive_vs_model": 0.5311791383219955,
+   "se_family_over_model": 4.244813122781791,
+   "se_family_over_model_negative": 2.2465716835910055,
+   "se_model_over_fisher": 0.9809645898091699,
+   "B": 200
+  },
+  "se_sensitivity": {
+   "1": {
+    "se_ratio": 4.175399520266779,
+    "effective_clusters": 12.95425775183211
+   },
+   "2": {
+    "se_ratio": 3.240492418108492,
+    "effective_clusters": 25.538781099503023
+   },
+   "4": {
+    "se_ratio": 2.224893559006432,
+    "effective_clusters": 50.93883688813872
+   }
+  },
+  "dif": {
+   "n_llama": 189,
+   "n_qwen": 435,
+   "group": 189,
+   "placebo_models": 333,
+   "placebo_families": 62,
+   "perm": 0.029848770923853886,
+   "named": 0.46753314153629927,
+   "named_bh": 0.3975459341007207,
+   "placebo_bh": 0.15565058584873692,
+   "placebo_largest_share": 0.24924924924924924,
+   "placebo_mean": 0.2716636947566782,
+   "placebo_lo": 0.20197848929192364,
+   "placebo_hi": 0.3315826484664003,
+   "replication": {
+    "Llama": {
+     "bases": [
+      "llama3-8b",
+      "LlamaForCausalLM|h3072|L28|v128k"
+     ],
+     "same_sign": 0.793579507651364,
+     "significant": 0.37608117099135063,
+     "null": 0.5149866932801064
+    },
+    "Qwen": {
+     "bases": [
+      "Qwen2ForCausalLM|h896|L24|v151k",
+      "Qwen2Model|h896|L24|v151k",
+      "Qwen2ForCausalLM|h3584|L28|v152k"
+     ],
+     "same_sign": 0.44876912840984695,
+     "significant": 0.08000665335994678,
+     "null": 0.4639886892880905
+    }
+   }
+  },
+  "transfer": {
+   "real": 0.840674274095471,
+   "shuffled": 0.9111039206247128,
+   "positive_seeds": 10,
+   "seeds": 10
+  }
+ }
+}

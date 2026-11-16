@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "allenai/BenchMIRT-eval-data",
+    "filename": "llm_response_scores.csv",
+    "revision": "67edc41cba6795b596959ffb81f631f6bc285e3b",
+    "sha256": "0eebb87aaa3703373bbbac96624d1869cea96e64f921fea40ed782bfb2581c6e",
+    "url": "https://huggingface.co/datasets/allenai/BenchMIRT-eval-data/resolve/67edc41cba6795b596959ffb81f631f6bc285e3b/llm_response_scores.csv",
+    "license": "CC-BY-4.0"
+  },
+  "matrix_sha256": "03fdbbfe251a8291b5ad424f94c3bd87573824929acdeeca1016b6631d186c4d",
+  "semantic_sha256": "b03b124ed03acd54b4eb200957593b8364fdbc4d642e9553cbb961065745f4f2",
+  "source_alignment_verified": true,
+  "n_models": 100,
+  "n_items": 34301,
+  "tasks": {
+    "bbh": {
+      "n_items": 5761,
+      "source_stratum": "leaderboard_v2_reasoning"
+    },
+    "bbq": {
+      "n_items": 4482,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "do_anything_now": {
+      "n_items": 300,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "gpqa": {
+      "n_items": 546,
+      "source_stratum": "leaderboard_v2_reasoning"
+    },
+    "harmbench": {
+      "n_items": 320,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "ifeval": {
+      "n_items": 541,
+      "source_stratum": "leaderboard_v2_reasoning"
+    },
+    "math": {
+      "n_items": 1324,
+      "source_stratum": "leaderboard_v2_reasoning"
+    },
+    "mmlu_pro": {
+      "n_items": 11994,
+      "source_stratum": "leaderboard_v2_reasoning"
+    },
+    "musr": {
+      "n_items": 756,
+      "source_stratum": "leaderboard_v2_reasoning"
+    },
+    "strongreject": {
+      "n_items": 2294,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "toxigen": {
+      "n_items": 1400,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "trustllm_jailbreaktrigger": {
+      "n_items": 400,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "wildguardtest": {
+      "n_items": 749,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "wildjailbreak": {
+      "n_items": 2250,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "wmdp": {
+      "n_items": 734,
+      "source_stratum": "separately_evaluated_safety"
+    },
+    "xstest": {
+      "n_items": 450,
+      "source_stratum": "separately_evaluated_safety"
+    }
+  },
+  "transformation": {
+    "orientation": "CSV item rows transposed to model rows",
+    "model_ids": "remove acc_norm_ prefix; replace every __ with /",
+    "task_ids": "question_id prefix before first __",
+    "binary_domain_validated_before_cast": true,
+    "preserve_csv_item_and_model_order": true
+  },
+  "interpretation": "Separately curated mixed-provenance archive; not a temporal holdout or independent evaluation harness."
+}

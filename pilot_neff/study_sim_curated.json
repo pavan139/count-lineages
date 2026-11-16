@@ -1,0 +1,286 @@
+{
+ "null: no families": {
+  "truth": {
+   "difficulty": 1.0054198551581655,
+   "discrimination": 1.0058668645913031,
+   "item_rest": 1.0070837592292359,
+   "association": 0.9953527105927908
+  },
+  "truth_fixed_scale": {
+   "difficulty": 1.008646444947197,
+   "discrimination": 1.005992200290327
+  },
+  "truth_half_replicates": {
+   "difficulty": [
+    0.9691348103975449,
+    1.027679611707038
+   ],
+   "discrimination": [
+    1.004491420389662,
+    1.0113807643297592
+   ],
+   "item_rest": [
+    1.0088813486970345,
+    1.0097002055370046
+   ],
+   "association": [
+    1.0051972225000771,
+    0.9851634115059551
+   ]
+  },
+  "estimates_true_labels": {
+   "within_family_r": -0.009809307664371018,
+   "cr0_int": 0.9397562829264365,
+   "cr0_slope": 0.9447544756088481,
+   "cr3_int": 0.9849506665365879,
+   "cr3_slope": 0.9878286747815351,
+   "block_difficulty": 0.9699835185470246,
+   "block_assoc": 1.0009784913448943
+  },
+  "coverage95": {
+   "difficulty:naive": 0.9282166666666667,
+   "difficulty:hc0": 0.9249583333333333,
+   "difficulty:cr0": 0.9130666666666667,
+   "difficulty:cr3": 0.9244083333333334,
+   "difficulty:cr3_t": 0.9379166666666666,
+   "difficulty:family_bootstrap": 0.9256666666666666,
+   "discrimination:naive": 0.9383083333333333,
+   "discrimination:hc0": 0.9302583333333333,
+   "discrimination:cr0": 0.9186083333333334,
+   "discrimination:cr3": 0.9330416666666667,
+   "discrimination:cr3_t": 0.9451583333333333,
+   "discrimination:family_bootstrap": 0.9186666666666666
+  },
+  "coverage_se": {
+   "difficulty:naive": 0.0018207779676301568,
+   "difficulty:cr3": 0.0017938977710457644,
+   "difficulty:cr3_t": 0.001624031050150166,
+   "difficulty:family_bootstrap": 0.005125318418292554,
+   "discrimination:naive": 0.0013706658121214366,
+   "discrimination:cr3": 0.001330176384154734,
+   "discrimination:cr3_t": 0.0011970390746739621,
+   "discrimination:family_bootstrap": 0.0035867038411952056
+  },
+  "models": 100,
+  "families": 51,
+  "largest": 10,
+  "effective_clusters": 24.63054187192118,
+  "t_crit": 2.0656075215330576,
+  "sigma": 1.1,
+  "reps": 300,
+  "items": 400
+ },
+ "families, unrelated ability": {
+  "truth": {
+   "difficulty": 1.4152167675396803,
+   "discrimination": 1.024778200521827,
+   "item_rest": 1.0349045586631282,
+   "association": 1.0958619604395476
+  },
+  "truth_fixed_scale": {
+   "difficulty": 1.4679296190386175,
+   "discrimination": 1.0289222233874862
+  },
+  "truth_half_replicates": {
+   "difficulty": [
+    1.386759392234974,
+    1.4409428436975191
+   ],
+   "discrimination": [
+    1.0234415397296652,
+    1.0212248300151239
+   ],
+   "item_rest": [
+    1.0276780824905951,
+    1.0335990416926106
+   ],
+   "association": [
+    1.1016785387969552,
+    1.073046892028453
+   ]
+  },
+  "estimates_true_labels": {
+   "within_family_r": 0.14020715573867285,
+   "cr0_int": 1.302443773742047,
+   "cr0_slope": 0.9501836684612092,
+   "cr3_int": 1.3925034825856362,
+   "cr3_slope": 1.0013180161539013,
+   "block_difficulty": 1.429033896560339,
+   "block_assoc": 1.061492083733824
+  },
+  "coverage95": {
+   "difficulty:naive": 0.880075,
+   "difficulty:hc0": 0.8777833333333334,
+   "difficulty:cr0": 0.9187666666666666,
+   "difficulty:cr3": 0.931325,
+   "difficulty:cr3_t": 0.9437583333333334,
+   "difficulty:family_bootstrap": 0.9223333333333333,
+   "discrimination:naive": 0.9420333333333333,
+   "discrimination:hc0": 0.9348416666666667,
+   "discrimination:cr0": 0.9237583333333333,
+   "discrimination:cr3": 0.9383666666666667,
+   "discrimination:cr3_t": 0.9498583333333334,
+   "discrimination:family_bootstrap": 0.9223333333333333
+  },
+  "coverage_se": {
+   "difficulty:naive": 0.0015688090405003266,
+   "difficulty:cr3": 0.0011524951795512585,
+   "difficulty:cr3_t": 0.0010277739114041386,
+   "difficulty:family_bootstrap": 0.004536518488885501,
+   "discrimination:naive": 0.0011604461147270838,
+   "discrimination:cr3": 0.001070369441240145,
+   "discrimination:cr3_t": 0.0009780946850703987,
+   "discrimination:family_bootstrap": 0.0032526911934581183
+  },
+  "models": 100,
+  "families": 51,
+  "largest": 10,
+  "effective_clusters": 24.63054187192118,
+  "t_crit": 2.0656075215330576,
+  "sigma": 1.1,
+  "reps": 300,
+  "items": 400
+ },
+ "families, shared ability": {
+  "truth": {
+   "difficulty": 1.641401015418564,
+   "discrimination": 1.2634465080394763,
+   "item_rest": 1.2565957485724977,
+   "association": 1.0903948354920734
+  },
+  "truth_fixed_scale": {
+   "difficulty": 1.5007004585960255,
+   "discrimination": 1.2365488519745866
+  },
+  "truth_half_replicates": {
+   "difficulty": [
+    1.6361617874888266,
+    1.647473684197874
+   ],
+   "discrimination": [
+    1.267542717013887,
+    1.2493448604732624
+   ],
+   "item_rest": [
+    1.2567156355084559,
+    1.228730176092217
+   ],
+   "association": [
+    1.0906939645935076,
+    1.0854047096103414
+   ]
+  },
+  "estimates_true_labels": {
+   "within_family_r": 0.13424268938945022,
+   "cr0_int": 1.286205576043147,
+   "cr0_slope": 1.042683517139673,
+   "cr3_int": 1.4118781885984626,
+   "cr3_slope": 1.1481050816521552,
+   "block_difficulty": 1.4107826295317176,
+   "block_assoc": 1.0581281039016097
+  },
+  "coverage95": {
+   "difficulty:naive": 0.8531916666666667,
+   "difficulty:hc0": 0.8506916666666666,
+   "difficulty:cr0": 0.8940583333333333,
+   "difficulty:cr3": 0.9129083333333333,
+   "difficulty:cr3_t": 0.9277166666666666,
+   "difficulty:family_bootstrap": 0.9098333333333334,
+   "discrimination:naive": 0.9142583333333333,
+   "discrimination:hc0": 0.9059916666666666,
+   "discrimination:cr0": 0.9108416666666667,
+   "discrimination:cr3": 0.9324833333333333,
+   "discrimination:cr3_t": 0.9450083333333333,
+   "discrimination:family_bootstrap": 0.9111666666666667
+  },
+  "coverage_se": {
+   "difficulty:naive": 0.0032147450722615047,
+   "difficulty:cr3": 0.00241866292072171,
+   "difficulty:cr3_t": 0.002170569348419049,
+   "difficulty:family_bootstrap": 0.006181019333410955,
+   "discrimination:naive": 0.0015976240315844952,
+   "discrimination:cr3": 0.0013690017314600955,
+   "discrimination:cr3_t": 0.0012184061955716602,
+   "discrimination:family_bootstrap": 0.0049194060165385365
+  },
+  "models": 100,
+  "families": 51,
+  "largest": 10,
+  "effective_clusters": 24.63054187192118,
+  "t_crit": 2.0656075215330576,
+  "sigma": 1.1,
+  "reps": 300,
+  "items": 400
+ },
+ "families, shared ability, uneven items": {
+  "truth": {
+   "difficulty": 1.3440744929909347,
+   "discrimination": 1.1105063004188955,
+   "item_rest": 1.1166954870949053,
+   "association": 1.011050021134158
+  },
+  "truth_fixed_scale": {
+   "difficulty": 1.1429642393553152,
+   "discrimination": 1.1193484524184756
+  },
+  "truth_half_replicates": {
+   "difficulty": [
+    1.3455864899159482,
+    1.4287828231433695
+   ],
+   "discrimination": [
+    1.1315485534717533,
+    1.0984622308375376
+   ],
+   "item_rest": [
+    1.1416888908555134,
+    1.1263756379108698
+   ],
+   "association": [
+    1.0279964013334095,
+    1.0051068721370493
+   ]
+  },
+  "estimates_true_labels": {
+   "within_family_r": 0.09719651036301666,
+   "cr0_int": 1.0770105932259006,
+   "cr0_slope": 0.9997659385050494,
+   "cr3_int": 1.1634889887612812,
+   "cr3_slope": 1.084538030528792,
+   "block_difficulty": 1.2974213217108308,
+   "block_assoc": 1.0306453568896294
+  },
+  "coverage95": {
+   "difficulty:naive": 0.8691666666666666,
+   "difficulty:hc0": 0.8659083333333333,
+   "difficulty:cr0": 0.8901,
+   "difficulty:cr3": 0.9068916666666667,
+   "difficulty:cr3_t": 0.9227583333333333,
+   "difficulty:family_bootstrap": 0.9203333333333333,
+   "discrimination:naive": 0.92035,
+   "discrimination:hc0": 0.912225,
+   "discrimination:cr0": 0.9125166666666666,
+   "discrimination:cr3": 0.932625,
+   "discrimination:cr3_t": 0.9447833333333333,
+   "discrimination:family_bootstrap": 0.9218333333333333
+  },
+  "coverage_se": {
+   "difficulty:naive": 0.0033848792308452313,
+   "difficulty:cr3": 0.0030323170993055357,
+   "difficulty:cr3_t": 0.002738863773267761,
+   "difficulty:family_bootstrap": 0.0049506453002501494,
+   "discrimination:naive": 0.0015438525044691137,
+   "discrimination:cr3": 0.0014569338523076462,
+   "discrimination:cr3_t": 0.0012968376779547094,
+   "discrimination:family_bootstrap": 0.0036200828719795903
+  },
+  "models": 100,
+  "families": 51,
+  "largest": 10,
+  "effective_clusters": 24.63054187192118,
+  "t_crit": 2.0656075215330576,
+  "sigma": 1.1,
+  "reps": 300,
+  "items": 400
+ }
+}

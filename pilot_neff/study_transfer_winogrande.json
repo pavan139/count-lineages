@@ -1,0 +1,46 @@
+{
+ "task": "winogrande",
+ "M": 1115,
+ "J": 1267,
+ "seeds": 30,
+ "yield": {
+  "family": 0.9201666666666666,
+  "shuffled": 0.9910416666666666,
+  "entry": 0.9985,
+  "gap_mean": 0.07087499999999998,
+  "gap_lo": 0.021874999999999978,
+  "gap_hi": 0.12657812499999996,
+  "seeds_gap_positive": 30,
+  "ratio_family_over_shuffled": 0.928484338869035
+ },
+ "cond": {
+  "family": 0.9201666666666666,
+  "shuffled": 0.9910416666666666,
+  "entry": 0.9985,
+  "gap_mean": 0.07087499999999998,
+  "gap_lo": 0.021874999999999978,
+  "gap_hi": 0.12657812499999996,
+  "seeds_gap_positive": 30,
+  "ratio_family_over_shuffled": 0.928484338869035
+ },
+ "rank": {
+  "family": 0.8567829470859348,
+  "shuffled": 0.9145774542244981,
+  "entry": 0.9261742661263087,
+  "gap_mean": 0.05779450713856303,
+  "gap_lo": 0.03572282927882861,
+  "gap_hi": 0.09197820661955612,
+  "seeds_gap_positive": 30,
+  "ratio_family_over_shuffled": 0.9368074219721836
+ },
+ "msd": {
+  "family": 0.009826922748673288,
+  "shuffled": 0.004064063141228466,
+  "entry": 0.000531672731991116,
+  "gap_mean": -0.005762859607444823,
+  "gap_lo": -0.00877548897470467,
+  "gap_hi": -0.003607149933416566,
+  "seeds_gap_positive": 0,
+  "ratio_family_over_shuffled": 2.418004447072358
+ }
+}

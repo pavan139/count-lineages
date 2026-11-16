@@ -1,0 +1,15 @@
+\begin{table}[!htb]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{Re-audit of family differential item functioning on the archive with the Mantel--Haenszel procedure (continuity-corrected, ten score strata, 200 models per group). Share of items (\%) flagged at $p<0.05$ when group labels are permuted across models, when families with no known descent from either named group are split at random into two groups (mean and 2.5--97.5 percentiles over 100 splits), and for the Llama families against Mistral-7B derivatives; then the placebo and named shares after a 5\% false discovery rate. Replication: of the items flagged in the pooled named contrast (all models), the share significant with the same sign in each of the three largest Llama base-model labels, and the same share when the Llama models are split at random into groups of those sizes.}\label{tab:dif}
+\begin{tabular}{lrrr|rr|rr}
+\toprule
+ & \multicolumn{3}{c|}{Flagged, $p<0.05$ (\%)} & \multicolumn{2}{c|}{After FDR (\%)} & \multicolumn{2}{c}{Replication (\%)}\\
+Benchmark & permuted & placebo & named & placebo & named & real & random\\
+\midrule
+ARC-Challenge & 2 & 8 (5--12) & 44 & 0.2 & 37 & 11 & 39\\
+HellaSwag & 1 & 6 (4--10) & 34 & 0.0 & 23 & 6 & 17\\
+TruthfulQA & 2 & 8 (5--12) & 41 & 0.2 & 34 & 16 & 37\\
+WinoGrande & 3 & 9 (7--12) & 48 & 0.2 & 40 & 14 & 35\\
+GSM8K & 3 & 6 (4--8) & 41 & 0.0 & 33 & 1 & 27\\
+\bottomrule
+\end{tabular}
+\end{table}

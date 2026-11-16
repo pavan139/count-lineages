@@ -1,0 +1,15 @@
+\begin{table}[!htb]\centering\small
+\caption{Estimated variance inflation on the archive with base-model families as clusters: delete-one-family jackknife variance over delete-one-model jackknife variance, mean over 20 random item splits. Difficulty is shown across items (25th percentile, median, 90th percentile) because it is strongly heterogeneous, and pooled over items (cluster-robust over heteroskedasticity-robust score variance), which is the quantity comparable with the association column. Discrimination is the item median. Simulation (Table~\ref{tab:simtruth}) indicates the difficulty estimates understate the true inflation.}\label{tab:inflation}
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{4}{c}{Difficulty} & & \\
+Benchmark & 25th & median & 90th & pooled & Discrimination & Association\\
+\midrule
+ARC-Challenge & 1.6 & 4.3 & 24.1 & 9.0 & 2.6 & 5.1\\
+HellaSwag & 1.1 & 1.4 & 10.8 & 7.6 & 1.2 & 5.3\\
+TruthfulQA & 1.7 & 4.1 & 24.1 & 7.1 & 2.9 & 4.1\\
+WinoGrande & 2.2 & 6.1 & 35.2 & 9.6 & 2.9 & 6.3\\
+GSM8K & 1.6 & 2.8 & 9.0 & 3.5 & 3.1 & 1.9\\
+\bottomrule
+\end{tabular}
+\end{table}

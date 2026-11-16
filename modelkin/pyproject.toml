@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modelkin"
+version = "0.1.0"
+description = "Lineage-aware uncertainty for item-level evaluation of language models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+modelkin = "modelkin.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

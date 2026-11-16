@@ -1,0 +1,16 @@
+\begin{table}[!htb]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{Detecting documented flawed items from the archive's responses. GSM8K: 1,315 annotated items, 119 flawed, 1,118 models; MMLU: 5,602 annotated items, 364 flawed, 842 models. AUROC of each screening score for separating flawed from clean items; 95\% interval for its difference from the usual screen (paired bootstrap over items); and precision (\%) among the 50 most suspicious items.}\label{tab:gold}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr|rrr}
+\toprule
+ & \multicolumn{3}{c|}{GSM8K} & \multicolumn{3}{c}{MMLU}\\
+Screening score & AUROC & difference & P@50 & AUROC & difference & P@50\\
+\midrule
+Item--rest correlation, all models (usual screen) & 0.727 & -- & 44 & 0.547 & -- & 20\\
+Divided by model-level standard error & 0.725 & [-0.015, +0.011] & 46 & 0.551 & [-0.001, +0.010] & 14\\
+Divided by family-level standard error & 0.693 & [-0.065, -0.002] & 36 & 0.556 & [-0.002, +0.021] & 18\\
+Families weighted equally & 0.733 & [-0.004, +0.017] & 42 & 0.545 & [-0.007, +0.004] & 16\\
+One model per family & 0.733 & [-0.004, +0.017] & 42 & 0.545 & [-0.007, +0.004] & 16\\
+\bottomrule
+\end{tabular}}
+\end{table}

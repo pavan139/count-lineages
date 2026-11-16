@@ -1,0 +1,25 @@
+\begin{table}[!htb]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{The matched simulation under four family layouts (400 items; 200 replicates for the archive layout, 300 for the curated panel, 120 otherwise). The newer leaderboard's family sizes are scaled to the archive's panel size. $G^\ast$: effective number of families. True inflation of difficulty for the median item on the panel's own ability scale and on a fixed scale, and of the item--rest correlation. Coverage (\%) of nominal 95\% intervals for difficulty: naive, family jackknife with a $t$ critical value, and family bootstrap.}\label{tab:simlayouts}
+\begin{tabular}{lrrlr|rrr|rrr}
+\toprule
+ & & & & & \multicolumn{3}{c|}{True inflation} & \multicolumn{3}{c}{Coverage (\%)}\\
+Layout & $M$ & $G^\ast$ & Scenario & $\bar r$ & diff. & fixed & item--rest & naive & CR3+$t$ & boot.\\
+\midrule
+Archive & 1,151 & 10 & Unrelated ability & 0.11 & 17.0 & 19.4 & 1.7 & 35 & 96 & 90\\
+ & &  & Shared ability & 0.09 & 25.7 & 17.9 & 6.8 & 28 & 87 & 90\\
+ & &  & Shared, uneven items & 0.07 & 11.9 & 3.0 & 2.7 & 37 & 76 & 89\\
+\midrule
+Newer leaderboard, scaled & 1,151 & 14 & Unrelated ability & 0.12 & 12.5 & 13.7 & 1.5 & 41 & 95 & 89\\
+ & &  & Shared ability & 0.11 & 18.8 & 13.0 & 5.7 & 33 & 88 & 89\\
+ & &  & Shared, uneven items & 0.08 & 9.2 & 2.4 & 3.0 & 42 & 76 & 93\\
+\midrule
+Balanced, 115 families of 10 & 1,151 & 115 & Unrelated ability & 0.16 & 2.2 & 2.4 & 1.1 & 79 & 95 & 93\\
+ & &  & Shared ability & 0.17 & 2.8 & 2.5 & 1.8 & 74 & 92 & 94\\
+ & &  & Shared, uneven items & 0.13 & 1.8 & 1.3 & 1.4 & 79 & 89 & 94\\
+\midrule
+Curated panel & 100 & 25 & Unrelated ability & 0.14 & 1.4 & 1.5 & 1.0 & 88 & 94 & 92\\
+ & &  & Shared ability & 0.13 & 1.6 & 1.5 & 1.3 & 85 & 93 & 91\\
+ & &  & Shared, uneven items & 0.10 & 1.3 & 1.1 & 1.1 & 87 & 92 & 92\\
+\bottomrule
+\end{tabular}
+\end{table}

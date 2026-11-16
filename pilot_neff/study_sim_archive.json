@@ -1,0 +1,286 @@
+{
+ "null: no families": {
+  "truth": {
+   "difficulty": 0.9801420532211294,
+   "discrimination": 0.9930222396282153,
+   "item_rest": 0.9943227980897023,
+   "association": 1.012175088840543
+  },
+  "truth_fixed_scale": {
+   "difficulty": 0.9908522927149275,
+   "discrimination": 0.9816791221211496
+  },
+  "truth_half_replicates": {
+   "difficulty": [
+    0.973295403350307,
+    0.9991427648956928
+   ],
+   "discrimination": [
+    0.992891238514078,
+    0.9711434327322626
+   ],
+   "item_rest": [
+    1.0179038235614881,
+    0.977538617916215
+   ],
+   "association": [
+    1.0029406031684993,
+    0.9915042096603044
+   ]
+  },
+  "estimates_true_labels": {
+   "within_family_r": -0.000874695843608543,
+   "cr0_int": 0.8125338940829769,
+   "cr0_slope": 0.8167087933483651,
+   "cr3_int": 0.9480652702684131,
+   "cr3_slope": 0.9523522979337494,
+   "block_difficulty": 0.8997663918430996,
+   "block_assoc": 1.015536071087037
+  },
+  "coverage95": {
+   "difficulty:naive": 0.932875,
+   "difficulty:hc0": 0.9326,
+   "difficulty:cr0": 0.899425,
+   "difficulty:cr3": 0.921,
+   "difficulty:cr3_t": 0.9548125,
+   "difficulty:family_bootstrap": 0.925,
+   "discrimination:naive": 0.9447375,
+   "discrimination:hc0": 0.9442125,
+   "discrimination:cr0": 0.91325,
+   "discrimination:cr3": 0.9328875,
+   "discrimination:cr3_t": 0.962325,
+   "discrimination:family_bootstrap": 0.921875
+  },
+  "coverage_se": {
+   "difficulty:naive": 0.0021687229825406466,
+   "difficulty:cr3": 0.0022530534836084117,
+   "difficulty:cr3_t": 0.0016944705570619985,
+   "difficulty:family_bootstrap": 0.005590169943749475,
+   "discrimination:naive": 0.0009112830069467986,
+   "discrimination:cr3": 0.0009523158450587697,
+   "discrimination:cr3_t": 0.000763935124863362,
+   "discrimination:family_bootstrap": 0.004747875072949301
+  },
+  "models": 1151,
+  "families": 314,
+  "largest": 332,
+  "effective_clusters": 9.957390997166415,
+  "t_crit": 2.2637985465467554,
+  "sigma": 1.1,
+  "reps": 200,
+  "items": 400
+ },
+ "families, unrelated ability": {
+  "truth": {
+   "difficulty": 16.951319592086495,
+   "discrimination": 1.4717111439650394,
+   "item_rest": 1.6689844530147202,
+   "association": 2.7852444776971885
+  },
+  "truth_fixed_scale": {
+   "difficulty": 19.372486777368543,
+   "discrimination": 1.4910736539920402
+  },
+  "truth_half_replicates": {
+   "difficulty": [
+    16.782177584315598,
+    17.24001467644083
+   ],
+   "discrimination": [
+    1.5044271077828575,
+    1.454668268197398
+   ],
+   "item_rest": [
+    1.6896071135643156,
+    1.654905669498966
+   ],
+   "association": [
+    2.7088008085652513,
+    2.761858832408267
+   ]
+  },
+  "estimates_true_labels": {
+   "within_family_r": 0.10513150970460546,
+   "cr0_int": 7.746054430561897,
+   "cr0_slope": 0.9949971359603367,
+   "cr3_int": 11.92229675961047,
+   "cr3_slope": 1.2227986175753538,
+   "block_difficulty": 13.04728549435156,
+   "block_assoc": 2.3781195479827817
+  },
+  "coverage95": {
+   "difficulty:naive": 0.346175,
+   "difficulty:hc0": 0.3452125,
+   "difficulty:cr0": 0.8550875,
+   "difficulty:cr3": 0.9260125,
+   "difficulty:cr3_t": 0.9567125,
+   "difficulty:family_bootstrap": 0.8983333333333333,
+   "discrimination:naive": 0.894625,
+   "discrimination:hc0": 0.8926625,
+   "discrimination:cr0": 0.891425,
+   "discrimination:cr3": 0.9210375,
+   "discrimination:cr3_t": 0.95355,
+   "discrimination:family_bootstrap": 0.9239583333333333
+  },
+  "coverage_se": {
+   "difficulty:naive": 0.0016922534901722022,
+   "difficulty:cr3": 0.0009841077018040247,
+   "difficulty:cr3_t": 0.0007557234737322906,
+   "difficulty:family_bootstrap": 0.0052224807855611646,
+   "discrimination:naive": 0.0013069226736880804,
+   "discrimination:cr3": 0.0010289979197014932,
+   "discrimination:cr3_t": 0.000775475660482004,
+   "discrimination:family_bootstrap": 0.004137266064215729
+  },
+  "models": 1151,
+  "families": 314,
+  "largest": 332,
+  "effective_clusters": 9.957390997166415,
+  "t_crit": 2.2637985465467554,
+  "sigma": 1.1,
+  "reps": 200,
+  "items": 400
+ },
+ "families, shared ability": {
+  "truth": {
+   "difficulty": 25.74301125530025,
+   "discrimination": 6.4883337982291955,
+   "item_rest": 6.786926905209055,
+   "association": 2.643787268322531
+  },
+  "truth_fixed_scale": {
+   "difficulty": 17.887136010910552,
+   "discrimination": 5.660204887527936
+  },
+  "truth_half_replicates": {
+   "difficulty": [
+    24.847233703280992,
+    26.10051025226229
+   ],
+   "discrimination": [
+    6.645285316515864,
+    6.0939083719225025
+   ],
+   "item_rest": [
+    6.866851546869745,
+    6.550699871705137
+   ],
+   "association": [
+    2.536106613058671,
+    2.647063069626125
+   ]
+  },
+  "estimates_true_labels": {
+   "within_family_r": 0.09358287221604579,
+   "cr0_int": 7.264565397771137,
+   "cr0_slope": 2.211126707799514,
+   "cr3_int": 12.475325920326789,
+   "cr3_slope": 4.153414101726413,
+   "block_difficulty": 11.723897926852805,
+   "block_assoc": 2.2117756516407563
+  },
+  "coverage95": {
+   "difficulty:naive": 0.276525,
+   "difficulty:hc0": 0.2762125,
+   "difficulty:cr0": 0.707925,
+   "difficulty:cr3": 0.8250125,
+   "difficulty:cr3_t": 0.87325,
+   "difficulty:family_bootstrap": 0.8979166666666667,
+   "discrimination:naive": 0.6000375,
+   "discrimination:hc0": 0.5992125,
+   "discrimination:cr0": 0.787025,
+   "discrimination:cr3": 0.9027375,
+   "discrimination:cr3_t": 0.93935,
+   "discrimination:family_bootstrap": 0.9072916666666667
+  },
+  "coverage_se": {
+   "difficulty:naive": 0.004717082983688118,
+   "difficulty:cr3": 0.008501975827344488,
+   "difficulty:cr3_t": 0.007397402415713235,
+   "difficulty:family_bootstrap": 0.008532769756780164,
+   "discrimination:naive": 0.009580326154090477,
+   "discrimination:cr3": 0.002889398591186408,
+   "discrimination:cr3_t": 0.0022482798980553997,
+   "discrimination:family_bootstrap": 0.006719759291117172
+  },
+  "models": 1151,
+  "families": 314,
+  "largest": 332,
+  "effective_clusters": 9.957390997166415,
+  "t_crit": 2.2637985465467554,
+  "sigma": 1.1,
+  "reps": 200,
+  "items": 400
+ },
+ "families, shared ability, uneven items": {
+  "truth": {
+   "difficulty": 11.947208976386047,
+   "discrimination": 2.233507445323588,
+   "item_rest": 2.6843419373163275,
+   "association": 1.172826950579951
+  },
+  "truth_fixed_scale": {
+   "difficulty": 3.0120228153795603,
+   "discrimination": 1.5868633614758418
+  },
+  "truth_half_replicates": {
+   "difficulty": [
+    10.694288194104908,
+    14.052926914896346
+   ],
+   "discrimination": [
+    2.3690483384608685,
+    2.2552368393869067
+   ],
+   "item_rest": [
+    2.7680644759782362,
+    2.7217356947947424
+   ],
+   "association": [
+    1.172743075885578,
+    1.1893952701964454
+   ]
+  },
+  "estimates_true_labels": {
+   "within_family_r": 0.07020736038005834,
+   "cr0_int": 2.0032631338691043,
+   "cr0_slope": 1.1676716853100144,
+   "cr3_int": 3.2715999965262377,
+   "cr3_slope": 1.6649745189614578,
+   "block_difficulty": 9.045238926749068,
+   "block_assoc": 1.6774744567904207
+  },
+  "coverage95": {
+   "difficulty:naive": 0.3691,
+   "difficulty:hc0": 0.3689875,
+   "difficulty:cr0": 0.6095125,
+   "difficulty:cr3": 0.702775,
+   "difficulty:cr3_t": 0.757275,
+   "difficulty:family_bootstrap": 0.8920833333333333,
+   "discrimination:naive": 0.72535,
+   "discrimination:hc0": 0.7250875,
+   "discrimination:cr0": 0.81815,
+   "discrimination:cr3": 0.88855,
+   "discrimination:cr3_t": 0.928525,
+   "discrimination:family_bootstrap": 0.9258333333333333
+  },
+  "coverage_se": {
+   "difficulty:naive": 0.01242800567267331,
+   "difficulty:cr3": 0.01377898978064067,
+   "difficulty:cr3_t": 0.013269987165592889,
+   "difficulty:family_bootstrap": 0.01792138988130602,
+   "discrimination:naive": 0.008038560194462687,
+   "discrimination:cr3": 0.0050874649875945095,
+   "discrimination:cr3_t": 0.004161850174501719,
+   "discrimination:family_bootstrap": 0.0055104068210372024
+  },
+  "models": 1151,
+  "families": 314,
+  "largest": 332,
+  "effective_clusters": 9.957390997166415,
+  "t_crit": 2.2637985465467554,
+  "sigma": 1.1,
+  "reps": 200,
+  "items": 400
+ }
+}

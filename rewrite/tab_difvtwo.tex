@@ -1,0 +1,15 @@
+\begin{table}[!htb]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{The same Mantel--Haenszel re-audit on the newer leaderboard, for the family pair compared by \citet{dif2026llm}: Llama against Qwen models (up to 200 per group; 40 placebo splits of the remaining architecture classes). Columns as in Table~\ref{tab:dif}. Replication is shown for each family's three largest groups by architecture and parameter count, with the random-split comparison beside it; it is omitted where a family has a single such group with at least 40 entries.}\label{tab:difvtwo}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrr|rr|rr|rr}
+\toprule
+ & \multicolumn{3}{c|}{Flagged, $p<0.05$ (\%)} & \multicolumn{2}{c|}{After FDR (\%)} & \multicolumn{2}{c|}{Llama repl.} & \multicolumn{2}{c}{Qwen repl.}\\
+Benchmark & permuted & placebo & named & placebo & named & real & random & real & random\\
+\midrule
+MMLU-Pro & 3 & 27 (20--33) & 47 & 16 & 40 & 38 & 51 & 8 & 46\\
+BBH & 3 & 34 (21--43) & 53 & 23 & 47 & 11 & 48 & 27 & 59\\
+MATH & 2 & 12 (8--17) & 17 & 3 & 6 & 11 & 15 & 1 & 23\\
+MuSR & 4 & 41 (35--47) & 50 & 34 & 44 & 16 & 48 & 26 & 54\\
+\bottomrule
+\end{tabular}}
+\end{table}

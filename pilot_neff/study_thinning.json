@@ -1,0 +1,26 @@
+{
+ "families, unrelated ability": {
+  "difficulty": {
+   "naive_coverage_thinned": 0.93346875,
+   "variance_thinned_over_full": 0.22020468360567055,
+   "variance_weighted_over_full": 0.19303248515373575
+  },
+  "discrimination": {
+   "naive_coverage_thinned": 0.94546875,
+   "variance_thinned_over_full": 2.6509506623562737,
+   "variance_weighted_over_full": 2.2832527497755564
+  }
+ },
+ "families, shared ability": {
+  "difficulty": {
+   "naive_coverage_thinned": 0.93571875,
+   "variance_thinned_over_full": 0.1450134800605659,
+   "variance_weighted_over_full": 0.132779300232785
+  },
+  "discrimination": {
+   "naive_coverage_thinned": 0.94875,
+   "variance_thinned_over_full": 0.5953448587775172,
+   "variance_weighted_over_full": 0.5308673303362608
+  }
+ }
+}

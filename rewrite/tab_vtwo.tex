@@ -1,0 +1,14 @@
+\begin{table}[!htb]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{The newer leaderboard (entries submitted June 2024 to March 2025; responses from the RouterEval release), with families defined by configuration signature as on the archive. Residual correlation for same-family and different-family pairs (1,500 sampled items). SE ratio: family-level over model-level bootstrap standard error of item--rest correlations, with families as defined and with every family split at random into two and into four (100 resamples, 1,500 sampled items). Flags: items significantly negative at a 5\% false discovery rate under the model and the family bootstrap (200--400 resamples, all items). Transfer: rank agreement of item--rest correlations between panel halves for shuffled and real families (10 seeds).}\label{tab:vtwo}
+\begin{tabular}{lrrr|rr|rrr|rr|rr}
+\toprule
+ & & & & \multicolumn{2}{c|}{Residual $r$} & \multicolumn{3}{c|}{SE ratio} & \multicolumn{2}{c|}{Flags} & \multicolumn{2}{c}{Transfer}\\
+Benchmark & Models & Items & $G^\ast$ & same & diff. & as is & $\div2$ & $\div4$ & model & family & shuf. & real\\
+\midrule
+MMLU-Pro & 1,822 & 12,032 & 13 & $+0.270$ & $-0.023$ & 4.2 & 3.2 & 2.2 & 1764 & 937 & 0.91 & 0.84\\
+BBH & 3,794 & 5,761 & 14 & $+0.190$ & $-0.015$ & 4.5 & 3.3 & 2.4 & 982 & 564 & 0.98 & 0.90\\
+MATH & 3,794 & 1,278 & 14 & $+0.037$ & $+0.014$ & 2.6 & 1.8 & 1.6 & 0 & 2 & 0.98 & 0.92\\
+MuSR & 3,794 & 756 & 14 & $+0.190$ & $-0.015$ & 3.9 & 2.7 & 2.1 & 213 & 127 & 0.97 & 0.85\\
+\bottomrule
+\end{tabular}
+\end{table}

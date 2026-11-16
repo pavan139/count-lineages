@@ -1,0 +1,14 @@
+\begin{table}[!htb]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{Share (\%) of nominal 95\% intervals that contain the Monte Carlo mean of the estimator, in the same simulation; this measures the calibration of the standard error. Naive: model-based standard errors treating models as independent. CR0: cluster-robust with families as clusters. CR3: linearised delete-one-family jackknife with a normal critical value. CR3+$t$: CR3 with a $t$ critical value on $G^\ast-1$ degrees of freedom. Bootstrap: percentile interval from resampling whole families (40 replicates, 99 resamples, 120 items). Monte Carlo standard errors are at most 1.4 points for the first four methods and 1.8 for the bootstrap.}\label{tab:simcover}
+\begin{tabular}{l|rrrrr|rrrr}
+\toprule
+ & \multicolumn{5}{c|}{Difficulty} & \multicolumn{4}{c}{Discrimination}\\
+Scenario & naive & CR0 & CR3 & CR3+$t$ & boot. & naive & CR3 & CR3+$t$ & boot.\\
+\midrule
+No families & 93 & 90 & 92 & 95 & 92 & 94 & 93 & 96 & 92\\
+Families, unrelated ability & 35 & 86 & 93 & 96 & 90 & 89 & 92 & 95 & 92\\
+Families, shared ability & 28 & 71 & 83 & 87 & 90 & 60 & 90 & 94 & 91\\
+Shared ability, uneven items & 37 & 61 & 70 & 76 & 89 & 73 & 89 & 93 & 93\\
+\bottomrule
+\end{tabular}
+\end{table}

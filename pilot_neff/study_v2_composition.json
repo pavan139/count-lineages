@@ -1,0 +1,1147 @@
+{
+ "models": 4497,
+ "period": [
+  "2024-06-08",
+  "2025-03-13"
+ ],
+ "declares_other_base": 2719,
+ "removed": 561,
+ "signature": {
+  "families": 428,
+  "largest": 957,
+  "largest_share": 0.21280853902601735,
+  "effective_clusters": 14.871620096202566,
+  "top": [
+   [
+    "LlamaForCausalLM|8.0",
+    957
+   ],
+   [
+    "Qwen2ForCausalLM|7.6",
+    378
+   ],
+   [
+    "Qwen2ForCausalLM|14.8",
+    307
+   ],
+   [
+    "MistralForCausalLM|7.2",
+    284
+   ],
+   [
+    "MistralForCausalLM|12.2",
+    170
+   ]
+  ]
+ },
+ "declared": {
+  "families": 3851,
+  "largest": 112,
+  "largest_share": 0.02490549255058928,
+  "effective_clusters": 746.2089590790008,
+  "top": [
+   [
+    "Qwen/Qwen2.5-0.5B",
+    112
+   ],
+   [
+    "meta-llama/Meta-Llama-3.1-8B",
+    58
+   ],
+   [
+    "Qwen/Qwen2.5-14B",
+    29
+   ],
+   [
+    "meta-llama/Llama-3.2-3B-Instruct",
+    29
+   ],
+   [
+    "mistralai/Mistral-7B-v0.1",
+    26
+   ]
+  ]
+ },
+ "growth_signature": [
+  {
+   "date": "2024-06-12",
+   "entries": 25,
+   "families": 19,
+   "effective_clusters": 15.24390243902439
+  },
+  {
+   "date": "2024-06-12",
+   "entries": 50,
+   "families": 32,
+   "effective_clusters": 19.23076923076923
+  },
+  {
+   "date": "2024-06-12",
+   "entries": 75,
+   "families": 45,
+   "effective_clusters": 25.921658986175114
+  },
+  {
+   "date": "2024-06-12",
+   "entries": 100,
+   "families": 59,
+   "effective_clusters": 34.72222222222222
+  },
+  {
+   "date": "2024-06-12",
+   "entries": 125,
+   "families": 68,
+   "effective_clusters": 41.01049868766404
+  },
+  {
+   "date": "2024-06-12",
+   "entries": 150,
+   "families": 76,
+   "effective_clusters": 36.29032258064516
+  },
+  {
+   "date": "2024-06-13",
+   "entries": 175,
+   "families": 80,
+   "effective_clusters": 37.121212121212125
+  },
+  {
+   "date": "2024-06-26",
+   "entries": 200,
+   "families": 88,
+   "effective_clusters": 42.82655246252676
+  },
+  {
+   "date": "2024-06-26",
+   "entries": 225,
+   "families": 95,
+   "effective_clusters": 44.761273209549074
+  },
+  {
+   "date": "2024-06-26",
+   "entries": 250,
+   "families": 97,
+   "effective_clusters": 40.6371911573472
+  },
+  {
+   "date": "2024-06-26",
+   "entries": 275,
+   "families": 99,
+   "effective_clusters": 34.706287287746676
+  },
+  {
+   "date": "2024-06-26",
+   "entries": 300,
+   "families": 100,
+   "effective_clusters": 26.642984014209592
+  },
+  {
+   "date": "2024-06-26",
+   "entries": 325,
+   "families": 100,
+   "effective_clusters": 19.370071520264077
+  },
+  {
+   "date": "2024-06-26",
+   "entries": 350,
+   "families": 103,
+   "effective_clusters": 16.75328227571116
+  },
+  {
+   "date": "2024-06-27",
+   "entries": 375,
+   "families": 108,
+   "effective_clusters": 16.16565122427865
+  },
+  {
+   "date": "2024-06-27",
+   "entries": 400,
+   "families": 120,
+   "effective_clusters": 16.38001638001638
+  },
+  {
+   "date": "2024-06-29",
+   "entries": 425,
+   "families": 124,
+   "effective_clusters": 15.893092828860537
+  },
+  {
+   "date": "2024-07-02",
+   "entries": 450,
+   "families": 126,
+   "effective_clusters": 14.482906594192533
+  },
+  {
+   "date": "2024-07-05",
+   "entries": 475,
+   "families": 130,
+   "effective_clusters": 14.011364342048065
+  },
+  {
+   "date": "2024-07-11",
+   "entries": 500,
+   "families": 133,
+   "effective_clusters": 13.813681069731462
+  },
+  {
+   "date": "2024-07-18",
+   "entries": 525,
+   "families": 140,
+   "effective_clusters": 14.03314495188636
+  },
+  {
+   "date": "2024-07-25",
+   "entries": 550,
+   "families": 145,
+   "effective_clusters": 14.27425443563609
+  },
+  {
+   "date": "2024-07-29",
+   "entries": 575,
+   "families": 147,
+   "effective_clusters": 14.256608166961321
+  },
+  {
+   "date": "2024-07-31",
+   "entries": 600,
+   "families": 152,
+   "effective_clusters": 14.086711535451558
+  },
+  {
+   "date": "2024-08-05",
+   "entries": 625,
+   "families": 154,
+   "effective_clusters": 14.171050244875747
+  },
+  {
+   "date": "2024-08-07",
+   "entries": 650,
+   "families": 159,
+   "effective_clusters": 14.163593697619845
+  },
+  {
+   "date": "2024-08-08",
+   "entries": 675,
+   "families": 167,
+   "effective_clusters": 14.430842808728977
+  },
+  {
+   "date": "2024-08-14",
+   "entries": 700,
+   "families": 171,
+   "effective_clusters": 14.661001735383879
+  },
+  {
+   "date": "2024-08-22",
+   "entries": 725,
+   "families": 176,
+   "effective_clusters": 15.59949547410595
+  },
+  {
+   "date": "2024-08-26",
+   "entries": 750,
+   "families": 181,
+   "effective_clusters": 15.694754464285714
+  },
+  {
+   "date": "2024-08-29",
+   "entries": 775,
+   "families": 185,
+   "effective_clusters": 14.790440542736832
+  },
+  {
+   "date": "2024-08-30",
+   "entries": 800,
+   "families": 189,
+   "effective_clusters": 15.311737403703527
+  },
+  {
+   "date": "2024-09-03",
+   "entries": 825,
+   "families": 193,
+   "effective_clusters": 15.383789526026716
+  },
+  {
+   "date": "2024-09-05",
+   "entries": 850,
+   "families": 196,
+   "effective_clusters": 15.660221952488296
+  },
+  {
+   "date": "2024-09-06",
+   "entries": 875,
+   "families": 201,
+   "effective_clusters": 15.648952478283086
+  },
+  {
+   "date": "2024-09-09",
+   "entries": 900,
+   "families": 209,
+   "effective_clusters": 15.804261297120112
+  },
+  {
+   "date": "2024-09-12",
+   "entries": 925,
+   "families": 212,
+   "effective_clusters": 15.973583496686269
+  },
+  {
+   "date": "2024-09-14",
+   "entries": 950,
+   "families": 214,
+   "effective_clusters": 15.219224283305227
+  },
+  {
+   "date": "2024-09-16",
+   "entries": 975,
+   "families": 218,
+   "effective_clusters": 14.809780491984608
+  },
+  {
+   "date": "2024-09-17",
+   "entries": 1000,
+   "families": 221,
+   "effective_clusters": 14.219896479153633
+  },
+  {
+   "date": "2024-09-19",
+   "entries": 1025,
+   "families": 223,
+   "effective_clusters": 14.34986000136584
+  },
+  {
+   "date": "2024-09-19",
+   "entries": 1050,
+   "families": 229,
+   "effective_clusters": 14.665584761093966
+  },
+  {
+   "date": "2024-09-21",
+   "entries": 1075,
+   "families": 231,
+   "effective_clusters": 14.576317150389123
+  },
+  {
+   "date": "2024-09-22",
+   "entries": 1100,
+   "families": 232,
+   "effective_clusters": 14.579718527086948
+  },
+  {
+   "date": "2024-09-23",
+   "entries": 1125,
+   "families": 235,
+   "effective_clusters": 14.268762894733875
+  },
+  {
+   "date": "2024-09-25",
+   "entries": 1150,
+   "families": 240,
+   "effective_clusters": 14.236043833021164
+  },
+  {
+   "date": "2024-09-28",
+   "entries": 1175,
+   "families": 247,
+   "effective_clusters": 14.564937599561139
+  },
+  {
+   "date": "2024-09-29",
+   "entries": 1200,
+   "families": 247,
+   "effective_clusters": 13.909818013214327
+  },
+  {
+   "date": "2024-09-29",
+   "entries": 1225,
+   "families": 248,
+   "effective_clusters": 13.631759672247304
+  },
+  {
+   "date": "2024-09-30",
+   "entries": 1250,
+   "families": 249,
+   "effective_clusters": 13.296288101843185
+  },
+  {
+   "date": "2024-10-02",
+   "entries": 1275,
+   "families": 251,
+   "effective_clusters": 12.721762675786294
+  },
+  {
+   "date": "2024-10-04",
+   "entries": 1300,
+   "families": 253,
+   "effective_clusters": 12.73568554160575
+  },
+  {
+   "date": "2024-10-07",
+   "entries": 1325,
+   "families": 253,
+   "effective_clusters": 12.799365727408595
+  },
+  {
+   "date": "2024-10-07",
+   "entries": 1350,
+   "families": 254,
+   "effective_clusters": 12.268596432177718
+  },
+  {
+   "date": "2024-10-08",
+   "entries": 1375,
+   "families": 254,
+   "effective_clusters": 12.249344002073277
+  },
+  {
+   "date": "2024-10-09",
+   "entries": 1400,
+   "families": 257,
+   "effective_clusters": 12.339150361360833
+  },
+  {
+   "date": "2024-10-11",
+   "entries": 1425,
+   "families": 261,
+   "effective_clusters": 12.320632224008737
+  },
+  {
+   "date": "2024-10-13",
+   "entries": 1450,
+   "families": 263,
+   "effective_clusters": 12.500743207087222
+  },
+  {
+   "date": "2024-10-15",
+   "entries": 1475,
+   "families": 265,
+   "effective_clusters": 12.54461428464346
+  },
+  {
+   "date": "2024-10-16",
+   "entries": 1500,
+   "families": 265,
+   "effective_clusters": 12.606737040274323
+  },
+  {
+   "date": "2024-10-20",
+   "entries": 1525,
+   "families": 267,
+   "effective_clusters": 12.679855624798948
+  },
+  {
+   "date": "2024-10-22",
+   "entries": 1550,
+   "families": 274,
+   "effective_clusters": 12.89503628322384
+  },
+  {
+   "date": "2024-10-23",
+   "entries": 1575,
+   "families": 274,
+   "effective_clusters": 13.2473098181624
+  },
+  {
+   "date": "2024-10-25",
+   "entries": 1600,
+   "families": 277,
+   "effective_clusters": 13.498549960453467
+  },
+  {
+   "date": "2024-10-27",
+   "entries": 1625,
+   "families": 279,
+   "effective_clusters": 13.6704493096504
+  },
+  {
+   "date": "2024-10-29",
+   "entries": 1650,
+   "families": 279,
+   "effective_clusters": 13.886621916634363
+  },
+  {
+   "date": "2024-10-31",
+   "entries": 1675,
+   "families": 280,
+   "effective_clusters": 13.834101723330292
+  },
+  {
+   "date": "2024-11-05",
+   "entries": 1700,
+   "families": 280,
+   "effective_clusters": 13.875285667646098
+  },
+  {
+   "date": "2024-11-07",
+   "entries": 1725,
+   "families": 281,
+   "effective_clusters": 14.059111461793234
+  },
+  {
+   "date": "2024-11-08",
+   "entries": 1750,
+   "families": 281,
+   "effective_clusters": 14.236504955465888
+  },
+  {
+   "date": "2024-11-11",
+   "entries": 1775,
+   "families": 283,
+   "effective_clusters": 14.192707746780245
+  },
+  {
+   "date": "2024-11-13",
+   "entries": 1800,
+   "families": 284,
+   "effective_clusters": 14.283824890887448
+  },
+  {
+   "date": "2024-11-15",
+   "entries": 1825,
+   "families": 288,
+   "effective_clusters": 14.388454244229498
+  },
+  {
+   "date": "2024-11-17",
+   "entries": 1850,
+   "families": 290,
+   "effective_clusters": 14.591895901904941
+  },
+  {
+   "date": "2024-11-19",
+   "entries": 1875,
+   "families": 290,
+   "effective_clusters": 14.434743156520346
+  },
+  {
+   "date": "2024-11-21",
+   "entries": 1900,
+   "families": 294,
+   "effective_clusters": 14.362785664268891
+  },
+  {
+   "date": "2024-11-22",
+   "entries": 1925,
+   "families": 297,
+   "effective_clusters": 14.30483657405799
+  },
+  {
+   "date": "2024-11-25",
+   "entries": 1950,
+   "families": 299,
+   "effective_clusters": 14.30500797544166
+  },
+  {
+   "date": "2024-11-27",
+   "entries": 1975,
+   "families": 301,
+   "effective_clusters": 14.34881530883635
+  },
+  {
+   "date": "2024-11-28",
+   "entries": 2000,
+   "families": 302,
+   "effective_clusters": 14.421586230269467
+  },
+  {
+   "date": "2024-11-30",
+   "entries": 2025,
+   "families": 303,
+   "effective_clusters": 14.233586143459622
+  },
+  {
+   "date": "2024-12-02",
+   "entries": 2050,
+   "families": 304,
+   "effective_clusters": 14.315642458100559
+  },
+  {
+   "date": "2024-12-04",
+   "entries": 2075,
+   "families": 305,
+   "effective_clusters": 14.230413299621569
+  },
+  {
+   "date": "2024-12-06",
+   "entries": 2100,
+   "families": 306,
+   "effective_clusters": 14.157212473756188
+  },
+  {
+   "date": "2024-12-07",
+   "entries": 2125,
+   "families": 307,
+   "effective_clusters": 14.284663589746835
+  },
+  {
+   "date": "2024-12-11",
+   "entries": 2150,
+   "families": 308,
+   "effective_clusters": 14.342227738132175
+  },
+  {
+   "date": "2024-12-13",
+   "entries": 2175,
+   "families": 313,
+   "effective_clusters": 14.43051238328234
+  },
+  {
+   "date": "2024-12-15",
+   "entries": 2200,
+   "families": 319,
+   "effective_clusters": 14.505001828109734
+  },
+  {
+   "date": "2024-12-18",
+   "entries": 2225,
+   "families": 323,
+   "effective_clusters": 14.785444000107518
+  },
+  {
+   "date": "2024-12-19",
+   "entries": 2250,
+   "families": 324,
+   "effective_clusters": 14.859288045647732
+  },
+  {
+   "date": "2024-12-20",
+   "entries": 2275,
+   "families": 326,
+   "effective_clusters": 14.933636298059582
+  },
+  {
+   "date": "2024-12-21",
+   "entries": 2300,
+   "families": 328,
+   "effective_clusters": 15.069421892537076
+  },
+  {
+   "date": "2024-12-23",
+   "entries": 2325,
+   "families": 329,
+   "effective_clusters": 15.256981978803573
+  },
+  {
+   "date": "2024-12-24",
+   "entries": 2350,
+   "families": 330,
+   "effective_clusters": 15.380266470601342
+  },
+  {
+   "date": "2024-12-26",
+   "entries": 2375,
+   "families": 332,
+   "effective_clusters": 15.52877322519457
+  },
+  {
+   "date": "2024-12-27",
+   "entries": 2400,
+   "families": 334,
+   "effective_clusters": 15.732117007620245
+  },
+  {
+   "date": "2024-12-27",
+   "entries": 2425,
+   "families": 335,
+   "effective_clusters": 15.12121399129337
+  },
+  {
+   "date": "2024-12-28",
+   "entries": 2450,
+   "families": 335,
+   "effective_clusters": 14.961216737619765
+  },
+  {
+   "date": "2024-12-29",
+   "entries": 2475,
+   "families": 335,
+   "effective_clusters": 14.533297428877148
+  },
+  {
+   "date": "2024-12-29",
+   "entries": 2500,
+   "families": 335,
+   "effective_clusters": 14.748844870469744
+  },
+  {
+   "date": "2024-12-29",
+   "entries": 2525,
+   "families": 336,
+   "effective_clusters": 14.592102040863036
+  },
+  {
+   "date": "2024-12-30",
+   "entries": 2550,
+   "families": 337,
+   "effective_clusters": 14.480312120037945
+  },
+  {
+   "date": "2024-12-31",
+   "entries": 2575,
+   "families": 338,
+   "effective_clusters": 14.643186039270073
+  },
+  {
+   "date": "2025-01-01",
+   "entries": 2600,
+   "families": 338,
+   "effective_clusters": 14.75615239874791
+  },
+  {
+   "date": "2025-01-01",
+   "entries": 2625,
+   "families": 338,
+   "effective_clusters": 14.704548607035777
+  },
+  {
+   "date": "2025-01-02",
+   "entries": 2650,
+   "families": 339,
+   "effective_clusters": 14.774692513875271
+  },
+  {
+   "date": "2025-01-02",
+   "entries": 2675,
+   "families": 340,
+   "effective_clusters": 14.930601198934188
+  },
+  {
+   "date": "2025-01-03",
+   "entries": 2700,
+   "families": 340,
+   "effective_clusters": 14.8152062138511
+  },
+  {
+   "date": "2025-01-05",
+   "entries": 2725,
+   "families": 340,
+   "effective_clusters": 14.711228526881145
+  },
+  {
+   "date": "2025-01-07",
+   "entries": 2750,
+   "families": 340,
+   "effective_clusters": 14.742060243124595
+  },
+  {
+   "date": "2025-01-07",
+   "entries": 2775,
+   "families": 342,
+   "effective_clusters": 14.786401838741453
+  },
+  {
+   "date": "2025-01-08",
+   "entries": 2800,
+   "families": 343,
+   "effective_clusters": 14.762593395999035
+  },
+  {
+   "date": "2025-01-09",
+   "entries": 2825,
+   "families": 343,
+   "effective_clusters": 14.89086485266102
+  },
+  {
+   "date": "2025-01-09",
+   "entries": 2850,
+   "families": 343,
+   "effective_clusters": 15.04974893924515
+  },
+  {
+   "date": "2025-01-10",
+   "entries": 2875,
+   "families": 346,
+   "effective_clusters": 15.196482183862612
+  },
+  {
+   "date": "2025-01-12",
+   "entries": 2900,
+   "families": 350,
+   "effective_clusters": 15.358318145460256
+  },
+  {
+   "date": "2025-01-13",
+   "entries": 2925,
+   "families": 352,
+   "effective_clusters": 15.407573020798253
+  },
+  {
+   "date": "2025-01-14",
+   "entries": 2950,
+   "families": 353,
+   "effective_clusters": 15.500817566821393
+  },
+  {
+   "date": "2025-01-15",
+   "entries": 2975,
+   "families": 355,
+   "effective_clusters": 15.523844519943662
+  },
+  {
+   "date": "2025-01-15",
+   "entries": 3000,
+   "families": 357,
+   "effective_clusters": 15.592407537023306
+  },
+  {
+   "date": "2025-01-16",
+   "entries": 3025,
+   "families": 357,
+   "effective_clusters": 15.456170813648471
+  },
+  {
+   "date": "2025-01-17",
+   "entries": 3050,
+   "families": 360,
+   "effective_clusters": 15.452452459103533
+  },
+  {
+   "date": "2025-01-18",
+   "entries": 3075,
+   "families": 363,
+   "effective_clusters": 15.340552353171171
+  },
+  {
+   "date": "2025-01-19",
+   "entries": 3100,
+   "families": 366,
+   "effective_clusters": 15.41284285957152
+  },
+  {
+   "date": "2025-01-20",
+   "entries": 3125,
+   "families": 366,
+   "effective_clusters": 15.339200025131746
+  },
+  {
+   "date": "2025-01-21",
+   "entries": 3150,
+   "families": 367,
+   "effective_clusters": 15.195392300694953
+  },
+  {
+   "date": "2025-01-23",
+   "entries": 3175,
+   "families": 369,
+   "effective_clusters": 15.114536493794878
+  },
+  {
+   "date": "2025-01-24",
+   "entries": 3200,
+   "families": 371,
+   "effective_clusters": 15.097499771473393
+  },
+  {
+   "date": "2025-01-25",
+   "entries": 3225,
+   "families": 373,
+   "effective_clusters": 15.20530311558406
+  },
+  {
+   "date": "2025-01-25",
+   "entries": 3250,
+   "families": 374,
+   "effective_clusters": 15.253941112927544
+  },
+  {
+   "date": "2025-01-26",
+   "entries": 3275,
+   "families": 374,
+   "effective_clusters": 15.205435076930057
+  },
+  {
+   "date": "2025-01-27",
+   "entries": 3300,
+   "families": 376,
+   "effective_clusters": 15.12714301192669
+  },
+  {
+   "date": "2025-01-27",
+   "entries": 3325,
+   "families": 378,
+   "effective_clusters": 15.133559285840416
+  },
+  {
+   "date": "2025-01-27",
+   "entries": 3350,
+   "families": 379,
+   "effective_clusters": 15.21401980906727
+  },
+  {
+   "date": "2025-01-28",
+   "entries": 3375,
+   "families": 380,
+   "effective_clusters": 15.190882503170705
+  },
+  {
+   "date": "2025-01-29",
+   "entries": 3400,
+   "families": 383,
+   "effective_clusters": 15.172236382392857
+  },
+  {
+   "date": "2025-01-30",
+   "entries": 3425,
+   "families": 383,
+   "effective_clusters": 15.14299231789037
+  },
+  {
+   "date": "2025-01-31",
+   "entries": 3450,
+   "families": 384,
+   "effective_clusters": 15.169570370747996
+  },
+  {
+   "date": "2025-02-02",
+   "entries": 3475,
+   "families": 384,
+   "effective_clusters": 15.10788284146114
+  },
+  {
+   "date": "2025-02-02",
+   "entries": 3500,
+   "families": 387,
+   "effective_clusters": 15.004458467658962
+  },
+  {
+   "date": "2025-02-02",
+   "entries": 3525,
+   "families": 387,
+   "effective_clusters": 14.525266848169792
+  },
+  {
+   "date": "2025-02-03",
+   "entries": 3550,
+   "families": 387,
+   "effective_clusters": 14.380111914411946
+  },
+  {
+   "date": "2025-02-03",
+   "entries": 3575,
+   "families": 387,
+   "effective_clusters": 13.97469261006719
+  },
+  {
+   "date": "2025-02-04",
+   "entries": 3600,
+   "families": 387,
+   "effective_clusters": 13.8119191746952
+  },
+  {
+   "date": "2025-02-05",
+   "entries": 3625,
+   "families": 388,
+   "effective_clusters": 13.811867971549326
+  },
+  {
+   "date": "2025-02-05",
+   "entries": 3650,
+   "families": 390,
+   "effective_clusters": 13.822687780007346
+  },
+  {
+   "date": "2025-02-06",
+   "entries": 3675,
+   "families": 391,
+   "effective_clusters": 13.829243118209213
+  },
+  {
+   "date": "2025-02-06",
+   "entries": 3700,
+   "families": 393,
+   "effective_clusters": 13.858379308599483
+  },
+  {
+   "date": "2025-02-07",
+   "entries": 3725,
+   "families": 393,
+   "effective_clusters": 13.815898869188498
+  },
+  {
+   "date": "2025-02-08",
+   "entries": 3750,
+   "families": 393,
+   "effective_clusters": 13.897124221761043
+  },
+  {
+   "date": "2025-02-10",
+   "entries": 3775,
+   "families": 394,
+   "effective_clusters": 13.912808106369248
+  },
+  {
+   "date": "2025-02-12",
+   "entries": 3800,
+   "families": 398,
+   "effective_clusters": 13.869945250216118
+  },
+  {
+   "date": "2025-02-15",
+   "entries": 3825,
+   "families": 401,
+   "effective_clusters": 13.978540083638354
+  },
+  {
+   "date": "2025-02-18",
+   "entries": 3850,
+   "families": 401,
+   "effective_clusters": 14.028142408004346
+  },
+  {
+   "date": "2025-02-20",
+   "entries": 3875,
+   "families": 402,
+   "effective_clusters": 13.974718120774138
+  },
+  {
+   "date": "2025-02-21",
+   "entries": 3900,
+   "families": 402,
+   "effective_clusters": 14.063540202677713
+  },
+  {
+   "date": "2025-02-23",
+   "entries": 3925,
+   "families": 403,
+   "effective_clusters": 14.178282017182589
+  },
+  {
+   "date": "2025-02-25",
+   "entries": 3950,
+   "families": 403,
+   "effective_clusters": 14.202942086769713
+  },
+  {
+   "date": "2025-02-25",
+   "entries": 3975,
+   "families": 403,
+   "effective_clusters": 14.294589892677207
+  },
+  {
+   "date": "2025-02-26",
+   "entries": 4000,
+   "families": 406,
+   "effective_clusters": 14.380264524965936
+  },
+  {
+   "date": "2025-02-27",
+   "entries": 4025,
+   "families": 406,
+   "effective_clusters": 14.43174094420922
+  },
+  {
+   "date": "2025-02-27",
+   "entries": 4050,
+   "families": 407,
+   "effective_clusters": 14.379555388793722
+  },
+  {
+   "date": "2025-02-27",
+   "entries": 4075,
+   "families": 408,
+   "effective_clusters": 14.417821510527956
+  },
+  {
+   "date": "2025-02-28",
+   "entries": 4100,
+   "families": 408,
+   "effective_clusters": 14.391260797726163
+  },
+  {
+   "date": "2025-02-28",
+   "entries": 4125,
+   "families": 408,
+   "effective_clusters": 14.19919956673796
+  },
+  {
+   "date": "2025-03-01",
+   "entries": 4150,
+   "families": 411,
+   "effective_clusters": 14.214346317516597
+  },
+  {
+   "date": "2025-03-01",
+   "entries": 4175,
+   "families": 411,
+   "effective_clusters": 14.208864448380794
+  },
+  {
+   "date": "2025-03-03",
+   "entries": 4200,
+   "families": 411,
+   "effective_clusters": 14.236277003731777
+  },
+  {
+   "date": "2025-03-04",
+   "entries": 4225,
+   "families": 411,
+   "effective_clusters": 14.301632091578517
+  },
+  {
+   "date": "2025-03-06",
+   "entries": 4250,
+   "families": 414,
+   "effective_clusters": 14.332155286373323
+  },
+  {
+   "date": "2025-03-06",
+   "entries": 4275,
+   "families": 414,
+   "effective_clusters": 14.449795891259022
+  },
+  {
+   "date": "2025-03-07",
+   "entries": 4300,
+   "families": 417,
+   "effective_clusters": 14.464387410898121
+  },
+  {
+   "date": "2025-03-08",
+   "entries": 4325,
+   "families": 417,
+   "effective_clusters": 14.497371494648048
+  },
+  {
+   "date": "2025-03-08",
+   "entries": 4350,
+   "families": 417,
+   "effective_clusters": 14.567557746730431
+  },
+  {
+   "date": "2025-03-09",
+   "entries": 4375,
+   "families": 417,
+   "effective_clusters": 14.621019358850278
+  },
+  {
+   "date": "2025-03-10",
+   "entries": 4400,
+   "families": 423,
+   "effective_clusters": 14.713929592022861
+  },
+  {
+   "date": "2025-03-10",
+   "entries": 4425,
+   "families": 423,
+   "effective_clusters": 14.780139236846813
+  },
+  {
+   "date": "2025-03-12",
+   "entries": 4450,
+   "families": 425,
+   "effective_clusters": 14.792446346801723
+  },
+  {
+   "date": "2025-03-13",
+   "entries": 4475,
+   "families": 425,
+   "effective_clusters": 14.793459463492507
+  },
+  {
+   "date": "",
+   "entries": 4497,
+   "families": 428,
+   "effective_clusters": 14.871620096202566
+  }
+ ]
+}

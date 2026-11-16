@@ -1,0 +1,43 @@
+{
+ "models": 3795,
+ "signature": 3488,
+ "imputed": 593,
+ "coarse": 307,
+ "families": 368,
+ "largest": 866,
+ "effective": 13.891712925675318,
+ "top": [
+  [
+   "llama3-8b",
+   866
+  ],
+  [
+   "mistral-7b",
+   284
+  ],
+  [
+   "Qwen2ForCausalLM|h3584|L28|v152k",
+   238
+  ],
+  [
+   "MistralForCausalLM|h5120|L40|v131k",
+   168
+  ],
+  [
+   "Gemma2ForCausalLM|h3584|L42|v256k",
+   161
+  ],
+  [
+   "Qwen2ForCausalLM|h896|L24|v151k",
+   134
+  ],
+  [
+   "LlamaForCausalLM|h3072|L28|v128k",
+   101
+  ],
+  [
+   "llama-13b",
+   99
+  ]
+ ]
+}

@@ -1,0 +1,67 @@
+{
+ "arc": {
+  "M": 1151,
+  "items": 1167,
+  "negative": 179,
+  "fisher": 134,
+  "model": 119,
+  "family": 94,
+  "survive_vs_model": 0.773109243697479,
+  "se_family_over_model": 1.7059010348308439,
+  "se_family_over_model_negative": 1.2730263662734702,
+  "se_model_over_fisher": 1.217137208218284,
+  "B": 1000
+ },
+ "truthfulqa": {
+  "M": 1125,
+  "items": 815,
+  "negative": 59,
+  "fisher": 31,
+  "model": 25,
+  "family": 12,
+  "survive_vs_model": 0.48,
+  "se_family_over_model": 1.5906852158916296,
+  "se_family_over_model_negative": 1.493970585816246,
+  "se_model_over_fisher": 1.0492869983030169,
+  "B": 1000
+ },
+ "winogrande": {
+  "M": 1115,
+  "items": 1267,
+  "negative": 189,
+  "fisher": 146,
+  "model": 143,
+  "family": 78,
+  "survive_vs_model": 0.5454545454545454,
+  "se_family_over_model": 1.4772070732664142,
+  "se_family_over_model_negative": 1.9688181467947283,
+  "se_model_over_fisher": 1.2825234259169656,
+  "B": 1000
+ },
+ "gsm8k": {
+  "M": 1118,
+  "items": 1318,
+  "negative": 6,
+  "fisher": 0,
+  "model": 2,
+  "family": 2,
+  "survive_vs_model": 1.0,
+  "se_family_over_model": 2.014945166255505,
+  "se_family_over_model_negative": 1.1798586323270757,
+  "se_model_over_fisher": 1.05473371980819,
+  "B": 1000
+ },
+ "hellaswag": {
+  "M": 1151,
+  "items": 10010,
+  "negative": 613,
+  "fisher": 430,
+  "model": 349,
+  "family": 296,
+  "survive_vs_model": 0.836676217765043,
+  "se_family_over_model": 1.3956621052482552,
+  "se_family_over_model_negative": 1.1878725752453692,
+  "se_model_over_fisher": 1.7149215287809305,
+  "B": 500
+ }
+}

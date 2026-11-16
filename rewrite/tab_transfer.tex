@@ -1,0 +1,15 @@
+\begin{table}[!htb]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{Transfer of item screening statistics between two halves of the panel (30 seeds, both directions). Random: halves drawn at random. Shuffled: whole families held out after family labels are permuted within ability deciles, preserving family sizes and ability composition. Real: whole base-model families held out. Rank agreement is the Spearman correlation of item--rest correlations between halves. Yield is the share of the 100 most negative items in one half that are negative in both halves. Gap is shuffled minus real; ``seeds'' counts seeds with a positive gap. MSD ratio: mean squared difference of item accuracy between halves, real over shuffled.}\label{tab:transfer}
+\begin{tabular}{l|rrrrr|rrrr|r}
+\toprule
+ & \multicolumn{5}{c|}{Rank agreement} & \multicolumn{4}{c|}{Yield at 100} & MSD\\
+Benchmark & random & shuf. & real & gap & seeds & shuf. & real & gap & seeds & ratio\\
+\midrule
+ARC-Challenge & 0.980 & 0.967 & 0.921 & $+0.046$ & 30/30 & 0.978 & 0.945 & $+0.033$ & 29/30 & 1.8\\
+HellaSwag & 0.953 & 0.953 & 0.925 & $+0.028$ & 29/30 & 0.999 & 0.996 & $+0.003$ & 16/30 & 1.4\\
+TruthfulQA & 0.953 & 0.888 & 0.857 & $+0.030$ & 16/30 & 0.399 & 0.367 & $+0.032$ & 24/30 & 1.5\\
+WinoGrande & 0.926 & 0.915 & 0.857 & $+0.058$ & 30/30 & 0.991 & 0.920 & $+0.071$ & 30/30 & 2.4\\
+GSM8K & 0.977 & 0.964 & 0.895 & $+0.069$ & 30/30 & 0.038 & 0.037 & $+0.001$ & 18/30 & 1.2\\
+\bottomrule
+\end{tabular}
+\end{table}

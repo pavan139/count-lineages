@@ -1,0 +1,14 @@
+\begin{table}[!htb]\centering\small
+\caption{Re-audit of the significance of screening flags on the archive. Items whose item--rest correlation is significantly negative (one-sided, 5\% false discovery rate) under three standard errors: the Fisher formula, a bootstrap over individual models, and a bootstrap over whole base-model families (1,000 resamples each; 500 on HellaSwag). Survive: share of model-bootstrap flags still flagged under the family bootstrap, not reported where fewer than ten items are flagged. SE ratio: median family-level over model-level standard error, over all items.}\label{tab:screen}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Benchmark & Items & $r_{ir}<0$ & Fisher & Model & Family & Survive & SE ratio\\
+\midrule
+ARC-Challenge & 1,167 & 179 & 134 & 119 & 94 & 77\% & 1.7\\
+HellaSwag & 10,010 & 613 & 430 & 349 & 296 & 84\% & 1.4\\
+TruthfulQA & 815 & 59 & 31 & 25 & 12 & 48\% & 1.6\\
+WinoGrande & 1,267 & 189 & 146 & 143 & 78 & 55\% & 1.5\\
+GSM8K & 1,318 & 6 & 0 & 2 & 2 & -- & 2.0\\
+\bottomrule
+\end{tabular}
+\end{table}

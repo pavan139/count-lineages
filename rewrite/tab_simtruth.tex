@@ -1,0 +1,15 @@
+\begin{table}[!htb]\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{True variance inflation for the median item on the archive's family layout (1,151 models; 400 items; 200 replicates; family-effect spread 1.1 on the logit scale), and estimates that use the true family labels. $\bar r$ is the mean within-family residual correlation, for comparison with Table~\ref{tab:validation}. ``Fixed'' holds the ability scale fixed across replicates. The cluster-jackknife estimates of difficulty inflation run below the truth when one family dominates.}\label{tab:simtruth}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lr|rrrrrr|rrr}
+\toprule
+ & & \multicolumn{6}{c|}{True inflation} & \multicolumn{3}{c}{Estimated, true labels}\\
+Scenario & $\bar r$ & diff. & fixed & discr. & fixed & item--rest & assoc. & diff. & discr. & assoc.\\
+\midrule
+No families & 0.00 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 0.9 & 1.0 & 1.0\\
+Families, unrelated ability & 0.11 & 17.0 & 19.4 & 1.5 & 1.5 & 1.7 & 2.8 & 11.9 & 1.2 & 2.4\\
+Families, shared ability & 0.09 & 25.7 & 17.9 & 6.5 & 5.7 & 6.8 & 2.6 & 12.5 & 4.2 & 2.2\\
+Shared ability, uneven items & 0.07 & 11.9 & 3.0 & 2.2 & 1.6 & 2.7 & 1.2 & 3.3 & 1.7 & 1.7\\
+\bottomrule
+\end{tabular}}
+\end{table}
