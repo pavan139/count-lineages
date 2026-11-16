@@ -1,5 +1,6 @@
 \documentclass[10pt]{article}
-\usepackage{tmlr}
+% \def\anonymous{1} before \documentclass gives the anonymous review version.
+\ifdefined\anonymous \usepackage{tmlr} \else \usepackage[preprint]{tmlr} \fi
 \usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,microtype}
 \usepackage{caption,url,xurl,xcolor}
 \usepackage[section]{placeins}
@@ -23,7 +24,7 @@
 \newcommand{\deff}{\mathrm{deff}}
 
 \title{Count Lineages, Not Checkpoints:\\LLMs Are Not Independent Test-Takers}
-\author{Anonymous manuscript}
+\author{\name Pavan Reddy Mogili}
 \date{}
 
 \begin{document}
@@ -791,7 +792,7 @@ up to bootstrap noise.
 \section{Evidence status (working notes; not part of the paper)}
 \begin{tabular}{p{0.44\linewidth}p{0.50\linewidth}}
 \toprule
-Claim & Status on 15 November 2026\\
+Claim & Status on 16 November 2026\\
 \midrule
 Propositions 1--3, Corollary 1 & Re-derived; formulas checked by Monte Carlo by two independent reviewers\\
 Table~\ref{tab:ident} & 100 replicates, one layout, one clustering threshold\\
@@ -807,7 +808,8 @@ Table~\ref{tab:dif} & 100 placebo splits, 20 subsamples\\
 Table~\ref{tab:gold} & Published annotations; items aligned by question text (MMLU: 98 annotated items dropped as unmatched or duplicated)\\
 Models from 2025--26 & No public item-level panel found; newest ends March 2025\\
 \citet{dif2026llm} & Abstract only (full text behind a browser check)\\
-Human review of text and proofs & Not done\\
+Human review of text and proofs & Read and tested by the author (16 November 2026); no independent human reviewer\\
+Clean-clone rebuild & Tables, in-text numbers, figures and family labels reproduce exactly from a fresh clone; simulations and audits not re-run there\\
 \bottomrule
 \end{tabular}
 \fi

@@ -43,10 +43,10 @@ ax[1].set_xlabel("Mean residual correlation between model pairs")
 ax[1].grid(axis="x", color=GRID, lw=0.6); ax[1].set_axisbelow(True); ax[1].tick_params(length=0); ax[1].spines["left"].set_visible(False)
 ax[1].legend(frameon=False, loc="upper center", bbox_to_anchor=(0.45, -0.24), ncol=1, handletextpad=0.3, labelcolor=INK)
 ax[1].set_title("(b) Relatives answer alike", loc="left", color=INK, fontsize=8.5)
-fig.savefig(f"{OUT}/f1_lineage.pdf", bbox_inches="tight"); fig.savefig(f"{OUT}/f1_lineage.png", dpi=170, bbox_inches="tight")
+fig.savefig(f"{OUT}/f1_lineage.pdf", bbox_inches="tight", metadata={"CreationDate": None}); fig.savefig(f"{OUT}/f1_lineage.png", dpi=170, bbox_inches="tight")
 
 # ---- Figure 2: do 95% intervals cover the truth?
-s = json.load(open(f"{HERE}/study_sim.json"))
+s = json.load(open(f"{HERE}/study_sim_archive.json"))
 order = [("null: no families", "No families"), ("families, unrelated ability", "Families,\nunrelated ability"),
          ("families, shared ability", "Families,\nshared ability"), ("families, shared ability, uneven items", "Families, shared\nability, uneven items")]
 methods = [("difficulty:naive", "Models treated as independent", "o"), ("difficulty:cr3_t", "Family jackknife, $t$ critical value", "s"),
@@ -66,7 +66,7 @@ ax.set_yticks(yy); ax.set_yticklabels([n for _, n in order]); ax.set_xlim(15, 10
 ax.set_xlabel("Share of nominal 95% intervals for item difficulty that contain their target (%)")
 ax.grid(axis="x", color=GRID, lw=0.6); ax.set_axisbelow(True); ax.tick_params(length=0); ax.spines["left"].set_visible(False)
 ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.4, -0.26), ncol=3, handletextpad=0.2, columnspacing=1.0, labelcolor=INK)
-fig.savefig(f"{OUT}/f2_coverage.pdf", bbox_inches="tight"); fig.savefig(f"{OUT}/f2_coverage.png", dpi=170, bbox_inches="tight")
+fig.savefig(f"{OUT}/f2_coverage.pdf", bbox_inches="tight", metadata={"CreationDate": None}); fig.savefig(f"{OUT}/f2_coverage.png", dpi=170, bbox_inches="tight")
 # ---- Figure 3: more entries, less lineage diversity
 import datetime as dt
 g = json.load(open(f"{HERE}/study_growth.json"))
@@ -86,5 +86,5 @@ for a in ax:
     a.grid(axis="y", color=GRID, lw=0.6); a.set_axisbelow(True); a.tick_params(length=0)
     a.xaxis.set_major_locator(matplotlib.dates.MonthLocator(bymonth=(1, 7))); a.xaxis.set_major_formatter(matplotlib.dates.DateFormatter("%b %Y"))
     a.set_xlim(x[0], x[-1] + dt.timedelta(days=45))
-fig.savefig(f"{OUT}/f3_growth.pdf", bbox_inches="tight"); fig.savefig(f"{OUT}/f3_growth.png", dpi=170, bbox_inches="tight")
+fig.savefig(f"{OUT}/f3_growth.pdf", bbox_inches="tight", metadata={"CreationDate": None}); fig.savefig(f"{OUT}/f3_growth.png", dpi=170, bbox_inches="tight")
 print("figures written")
