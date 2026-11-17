@@ -39,7 +39,8 @@ Re-fetching metadata changes the lineage tables if repositories have been delete
 `../external_routereval/` holds `leaderboard_score.zip` (84 MB) from the Hugging Face dataset
 `linggm/RouterEval` (MIT licence), downloaded 15 November 2026. Its pickles are read with
 `pilot_neff/safe_pickle.py`, which only permits plain numeric and string arrays. The 1.1 GB
-`leaderboard_old.pkl` inside the zip was not extracted or used.
+`leaderboard_old.pkl` inside the zip is read only by `pilot_neff/gold_audit.py`, for the
+MMLU-Redux audit.
 
 ## Tool
 
